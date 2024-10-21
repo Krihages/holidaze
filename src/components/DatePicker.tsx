@@ -57,7 +57,7 @@ export default function DatePicker({
                 format(date.from, "LLL dd, y")
               )
             ) : (
-              <span>Select dates</span>
+              <span>No dates selected</span>
             )}
           </Button>
         </PopoverTrigger>

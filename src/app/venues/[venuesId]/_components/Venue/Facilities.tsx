@@ -9,7 +9,7 @@ type Facilities = {
 
 export default function Facilities({ facilities }: { facilities: Facilities }) {
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <h2 className="text-lg font-semibold">Facilities</h2>
       <div>
         <div className="flex items-center gap-2">

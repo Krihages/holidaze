@@ -24,14 +24,15 @@ export default async function Venue({ id }: { id: string }) {
         <div className="flex flex-col lg:flex-row gap-12 justify-between w-full">
           <VenueImages images={venue?.media} />
 
-          <div className="flex flex-col gap-y-4 max-w-[300px] lg:max-w-lg h-full  justify-between w-full  mx-auto lg:mx-0">
+          <div className="flex flex-col gap-y-4 max-w-[300px] lg:max-w-lg justify-between w-full  mx-auto lg:mx-0">
             <VenueHeader venue={venue} />
-
-            <Facilities facilities={venue?.meta} />
             <HostDetails host={venue?.owner} />
+            <div className="flex flex-col lg:flex-row gap-4 justify-between items-center">
+              <Booking venue={venue} />
+              <Facilities facilities={venue?.meta} />
+            </div>
           </div>
         </div>
-        <Booking venue={venue} />
       </Section>
     </>
   );

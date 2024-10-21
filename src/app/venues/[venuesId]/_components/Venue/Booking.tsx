@@ -16,8 +16,10 @@ export default function Booking({ venue }: { venue: VenueType }) {
 
   const TotalPrice = numNights(date) * venue.price;
 
+  function onSubmit() {}
+
   return (
-    <div className="flex flex-col my-6 gap-y-4 max-w-[300px]">
+    <div className="flex flex-col my-6 gap-4 max-w-[300px]">
       <h2 className="text-lg font-semibold">Booking</h2>
       <DatePicker
         price={venue.price}
@@ -26,12 +28,14 @@ export default function Booking({ venue }: { venue: VenueType }) {
         disabledDates={bookings}
       />
 
-      <div className="flex flex-col gap-2 text-sm h-14 justify-end ">
-        {numNights(date) > 0 && (
+      <div className="flex flex-col gap-2 text-sm  justify-end text-center text-muted-foreground">
+        {numNights(date) > 0 ? (
           <p>
-            Total price:
+            ({numNights(date)} Nights) Total:
             <span className="font-semibold"> {TotalPrice.toFixed(0)} NOK</span>
           </p>
+        ) : (
+          <p className="">Select dates from Calendar</p>
         )}
         <Button disabled={numNights(date) === 0} className="justify-self-end">
           Book now
