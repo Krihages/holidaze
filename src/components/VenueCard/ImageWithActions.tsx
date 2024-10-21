@@ -24,6 +24,8 @@ export default function ImageWithActions({ venue }: { venue: VenueType }) {
         src={newUrl}
         alt={venue.name}
         fill
+        loading="lazy"
+        quality={40}
         sizes="(max-width: full) 100vw, (max-width: 1200px) 50vw, 33vw"
         className="object-cover rounded-md"
         unoptimized={true}
