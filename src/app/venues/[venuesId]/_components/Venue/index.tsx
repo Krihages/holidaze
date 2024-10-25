@@ -20,17 +20,18 @@ export default async function Venue({ id }: { id: string }) {
   console.log(venue);
   return (
     <>
+      <VenueImages images={venue?.media} />
       <Section>
-        <div className="flex flex-col lg:flex-row gap-12 justify-between w-full">
-          <VenueImages images={venue?.media} />
-
-          <div className="flex flex-col gap-y-4 max-w-[300px] lg:max-w-lg justify-between w-full  mx-auto lg:mx-0">
+        <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start lg:justify-between w-full mx-auto   ">
+          <div className="flex flex-col gap-8 w-full max-w-xl">
             <VenueHeader venue={venue} />
-            <HostDetails host={venue?.owner} />
-            <div className="flex flex-col lg:flex-row gap-4 justify-between items-center">
-              <Booking venue={venue} />
+            <div className="flex flex-wrap gap-8 justify-between">
+              <HostDetails host={venue?.owner} />
               <Facilities facilities={venue?.meta} />
             </div>
+          </div>
+          <div className="max-w-xl w-full self-start mx-auto lg:mx-0 lg:max-w-fit">
+            <Booking venue={venue} />
           </div>
         </div>
       </Section>

@@ -5,14 +5,16 @@ import Location from "@/components/VenueCard/Location";
 
 export default function VenueHeader({ venue }: { venue: VenueType }) {
   return (
-    <div className="flex items-start flex-col gap-y-4  ">
-      <HoverMessage
-        message={`This venue can host up to ${venue.maxGuests} guests`}
-      >
-        <Badge>{venue.maxGuests} guests</Badge>
-      </HoverMessage>
+    <div className="flex items-start flex-col gap-y-4 w-full ">
       <div className="flex flex-col gap-y-2 w-full">
-        <h1 className="text-2xl font-bold">{venue.name}</h1>
+        <div className="flex justify-between">
+          <h1 className="text-2xl font-bold">{venue.name}</h1>
+          <HoverMessage
+            message={`This venue can host up to ${venue.maxGuests} guests`}
+          >
+            <Badge>{venue.maxGuests} guests</Badge>
+          </HoverMessage>
+        </div>
         <div className="flex items-center justify-between w-full flex-wrap gap-2">
           <Location location={venue.location} />
           <p className="font-semibold">

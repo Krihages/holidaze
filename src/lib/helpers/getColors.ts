@@ -7,7 +7,8 @@ export type ColorTypes =
   | "none"
   | "destructive"
   | "info"
-  | "success";
+  | "success"
+  | "primary-light";
 
 export function getColors(variant: ColorTypes) {
   const colors = {
@@ -25,6 +26,11 @@ export function getColors(variant: ColorTypes) {
       bg: "bg-primary",
       text: "text-primary-foreground",
       icon: "hsl(var(--primary))",
+    },
+    "primary-light": {
+      bg: "bg-primary-light",
+      text: "text-primary-foreground",
+      icon: "hsl(var(--primary-light))",
     },
     secondary: {
       bg: "bg-secondary",
@@ -51,6 +57,7 @@ export function getColors(variant: ColorTypes) {
       text: "text-success-foreground",
       icon: "hsl(var(--success))",
     },
+
     none: {
       bg: "",
       text: "",

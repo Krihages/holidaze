@@ -15,7 +15,15 @@ export default function Trigger({
 }: {
   children?: React.ReactNode;
   className?: string;
-  variant?: "none" | "primary" | "outline" | "ghost" | "link" | "destructive";
+  variant?:
+    | "none"
+    | "primary"
+    | "outline"
+    | "ghost"
+    | "link"
+    | "destructive"
+    | "reverse"
+    | "default";
 }) {
   return (
     <DialogTrigger

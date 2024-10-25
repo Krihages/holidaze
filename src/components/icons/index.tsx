@@ -11,6 +11,7 @@ import SearchIcon from "./SearchIcon";
 import FavoriteIcon from "./FavoriteIcon";
 import PinIcon from "./PinIcon";
 import CheckmarkIcon from "./CheckmarkIcon";
+import { ChevronDown } from "./Chevron";
 
 export {
   // wrappers
@@ -24,4 +25,5 @@ export {
   FavoriteIcon,
   PinIcon,
   CheckmarkIcon,
+  ChevronDown,
 };

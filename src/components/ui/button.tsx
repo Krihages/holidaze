@@ -22,7 +22,13 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        info: "bg-info text-info-foreground shadow-sm hover:bg-info hover:bg-opacity-80",
+        accent:
+          "bg-accent text-accent-foreground shadow-sm hover:bg-accent hover:bg-opacity-80",
+        reverse:
+          "bg-background text-foreground  hover:bg-background hover:bg-opacity-80 transition-opacity duration-300 font-semibold",
       },
+
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",

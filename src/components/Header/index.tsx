@@ -1,20 +1,41 @@
-import LoggedOut from "./LoggedOut";
-import LoggedIn from "./LoggedIn";
 import cookies from "@/lib/cookies";
-import Link from "next/link";
+import getMenuItems from "@/lib/helpers/getMenuItems";
+
+import LoggedIn from "./LoggedIn";
+import LoggedOut from "./LoggedOut";
+import Logo from "./Logo";
+import Nav from "./Nav";
+
+type User =
+  | {
+      manager: boolean;
+      name: string;
+      token: string;
+    }
+  | false;
 
 export default function Header() {
-  const token = cookies.get("auth_token");
-  const manager = cookies.get("venue_manager");
-  const profileName = cookies.get("profile_name");
+  const user = cookies.checkUser();
+  const menuItems = getMenuItems(user as User);
+  console.log(user);
 
   return (
-    <header className="flex justify-between items-center p-4 max-w-7xl w-full mx-auto">
-      <nav className="flex gap-4">
-        <Link href="/">Home</Link>
-        <Link href="/venues">Venues</Link>
-      </nav>
-      {token && manager && profileName ? <LoggedIn /> : <LoggedOut />}
+    <header className="p-4 bg-primary-light text-primary-foreground">
+      <div className="flex justify-between items-center  w-full  max-w-7xl mx-auto">
+        <Logo />
+        <Nav />
+        <div className="flex gap-4 items-center">
+          {user ? (
+            <LoggedIn
+              name={user.profileName}
+              avatar={user.profileAvatar}
+              manager={user.manager}
+            />
+          ) : (
+            <LoggedOut />
+          )}
+        </div>
+      </div>
     </header>
   );
 }

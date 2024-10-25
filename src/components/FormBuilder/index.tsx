@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
 import { Form } from "@/components/ui/form";
 import Field from "./Field";
+import CheckItem from "./CheckItem";
 
 type FormBuilderProps = {
   children: React.ReactNode;
@@ -40,3 +41,4 @@ export default function FormBuilder({
 }
 
 FormBuilder.Field = Field;
+FormBuilder.Checkbox = CheckItem;

@@ -25,7 +25,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const storedFavorites = JSON.parse(
-      localStorage.getItem("favorites") || "[]"
+      localStorage.getItem("venue_favorites") || "[]"
     );
     setFavorites(storedFavorites);
   }, []);
@@ -33,14 +33,14 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   const addFavorite = (product: VenueType) => {
     const filteredFavorites = [...favorites, product];
     setFavorites(filteredFavorites);
-    localStorage.setItem("favorites", JSON.stringify(filteredFavorites));
+    localStorage.setItem("venue_favorites", JSON.stringify(filteredFavorites));
   };
 
   const removeFavorite = (product: VenueType) => {
     const filteredFavorites = favorites.filter((fav) => fav.id !== product.id);
 
     setFavorites(filteredFavorites);
-    localStorage.setItem("favorites", JSON.stringify(filteredFavorites));
+    localStorage.setItem("venue_favorites", JSON.stringify(filteredFavorites));
   };
 
   const isFavorite = (product: VenueType) =>

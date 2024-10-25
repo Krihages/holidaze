@@ -21,8 +21,8 @@ body {
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     --primary: 178, 100%, 19%;
+    --primary-light: 178, 71%, 33%;
     --primary-foreground: 0 0% 98%;
-
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 280, 13%, 95%;
@@ -44,7 +44,6 @@ body {
     --info-foreground: 58, 100%, 19%;
     --success: 131, 64%, 23%;
     --success-foreground: 0, 0%, 100%;
-    --primary-light: 175, 23%, 89%;
   }
   .dark {
     --background: 240 10% 3.9%;

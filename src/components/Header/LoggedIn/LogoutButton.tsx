@@ -4,8 +4,12 @@ import { Button } from "@/components/ui/button";
 import logoutAction from "@/api/actions/LogoutAction";
 import { useFormStatus } from "react-dom";
 import { useActionHandler } from "@/hooks/useActionHandler";
-
-export default function LogoutButton() {
+import { ButtonProps } from "@/components/ui/button";
+export default function LogoutButton({
+  variant = "outline",
+}: {
+  variant?: ButtonProps["variant"];
+}) {
   const { pending } = useFormStatus();
   const handleAction = useActionHandler();
 
@@ -17,7 +21,12 @@ export default function LogoutButton() {
 
   return (
     <form action={handleLogout}>
-      <Button type="submit" disabled={pending}>
+      <Button
+        type="submit"
+        disabled={pending}
+        variant={variant}
+        className="w-full"
+      >
         {pending ? "Logging out..." : "Logout"}
       </Button>
     </form>

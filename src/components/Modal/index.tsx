@@ -15,24 +15,28 @@ Modal.Main = Main;
 type ModalProps = {
   children: React.ReactNode;
   className?: { content?: string; trigger?: string; header?: string };
-  triggerBtn?: string | React.ReactNode;
+  triggerBtn?: string | React.ReactNode | undefined;
   headerText?: string | React.ReactNode;
-  variant?: "basic" | "none";
+  variant?: "basic" | "none" | "controlled" | "default";
   triggerVariant?:
     | "primary"
     | "outline"
     | "ghost"
     | "link"
     | "destructive"
-    | "none";
+    | "none"
+    | "default"
+    | "reverse";
   description?: string;
+  open?: boolean | undefined;
+  isOpen?: (open: boolean) => void | undefined;
 };
 
 /* 
 Reusable Modal component 
 Comes in 2 main variants: "default" or "none"
 
-********* VARIANT "default"  ************* 
+********* VARIANT "default"   ************* 
 (defaults to this if variant if not specified in props)
 
 - Basic structure and CSS predefined (flexible)
@@ -40,6 +44,8 @@ Comes in 2 main variants: "default" or "none"
 - Add headerText for displayed Header / Title Text in the opened Modal
 - Children prop will usually contain atleast Modal.Main (for main content of opened Modal), 
   but can also contain other components like forexample Modal.Footer
+********* VARIANT "controlled" *************
+- Same as "default", but with open and isOpen props (for controlled state) and also no triggerBtn
 
 ********* VARIANT "none" *************
 - Comes without anything predefined, so will need to add all the Modal components as children prop
@@ -53,16 +59,23 @@ function Modal({
   triggerVariant = "none",
   variant = "basic",
   description,
+  open = undefined,
+  isOpen = undefined,
 }: ModalProps) {
   // "none" Variant
   if (variant === "none") return <Dialog>{children}</Dialog>;
 
   // "default" Variant
   return (
-    <Dialog>
-      <Modal.Trigger className={className?.trigger} variant={triggerVariant}>
-        {triggerBtn}
-      </Modal.Trigger>
+    <Dialog
+      open={variant === "controlled" ? open : undefined}
+      onOpenChange={variant === "controlled" ? isOpen : undefined}
+    >
+      {variant !== "controlled" && (
+        <Modal.Trigger className={className?.trigger} variant={triggerVariant}>
+          {triggerBtn}
+        </Modal.Trigger>
+      )}
       <DialogPortal>
         <DialogOverlay className="z-10" />
         <Modal.Content description={description} className={className?.content}>

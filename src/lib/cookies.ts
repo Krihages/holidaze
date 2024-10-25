@@ -40,6 +40,28 @@ const cookies = {
       });
     }
   },
+
+  checkUser: function checkUser() {
+    const token = cookies.get("auth_token") as string | undefined;
+    let manager = cookies.get("venue_manager") as boolean | string | undefined;
+    const profileName = cookies.get("profile_name") as string | undefined;
+    const profileAvatar = cookies.get("profile_avatar") as string | undefined;
+    if (manager === "true") {
+      manager = true;
+    }
+    if (manager === "false") {
+      manager = false;
+    }
+    if (
+      token &&
+      (manager === true || manager === false) &&
+      profileName &&
+      profileAvatar
+    ) {
+      return { token, manager, profileName, profileAvatar };
+    }
+    return false;
+  },
 };
 
 export default cookies;

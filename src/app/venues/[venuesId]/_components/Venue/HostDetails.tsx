@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HostDetails({ host }: { host: User }) {
   return (
-    <div className="bg-info text-info-foreground py-6 px-4 flex gap-4 items-center border rounded-md max-w-full w-[300px] my-6 ">
+    <div className="bg-info text-info-foreground py-6 px-4 flex gap-4 items-center border rounded-md max-w-full w-[300px] ">
       <div className="relative w-24  h-24 self-center aspect-square ">
         <Image
           src={host.avatar.url}

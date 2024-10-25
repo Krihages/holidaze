@@ -11,7 +11,7 @@ type Error = {
 };
 export default async function VenuesList({ params }: { params: SearchParams }) {
   const { data, error } = await request.get({
-    endpoint: "venues",
+    endpoint: "venues?sort=created&sortOrder=desc",
   });
   if (error) {
     return (

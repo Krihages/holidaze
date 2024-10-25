@@ -22,6 +22,7 @@ export default function FavoriteIcon({
       stroke={icon}
       width={size}
       height={size}
+      className="transition-colors duration-500"
     >
       <path
         strokeLinecap="round"

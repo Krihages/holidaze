@@ -12,9 +12,9 @@ export default function VenueImages({ images }: { images: Media[] }) {
 
   if (images?.length === 1) {
     return (
-      <div className="relative w-full lg:max-w-xl overflow-hidden aspect-square max-h-fit">
+      <div className="relative w-full  overflow-hidden aspect-square max-h-[600px] max-w-7xl mx-auto">
         <Image
-          className="object-cover rounded-md "
+          className="object-cover "
           src={images[0].url}
           alt={images[0].alt}
           fill

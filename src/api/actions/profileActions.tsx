@@ -18,16 +18,14 @@ export async function getProfileData() {
 
 export async function updateProfileCookies(name: string) {
   "use server";
-  console.log("updateProfileCookies kjører på server");
+
   const { data, error } = await request.get({
     endpoint: `profiles/${name}`,
   });
 
   if (data?.data) {
-    console.log("Prøver å sette cookie");
     try {
       cookies.set("venue_manager", "testt");
-      console.log("Cookie satt vellykket");
     } catch (e) {
       console.error("Feil ved setting av cookie:", e);
     }
