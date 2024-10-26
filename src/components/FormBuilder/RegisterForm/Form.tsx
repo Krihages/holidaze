@@ -2,6 +2,7 @@ import { z } from "zod";
 import FormBuilder from "@/components/FormBuilder";
 import { SubmitHandler, FieldValues } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import Spinner from "@/components/Loaders/Spinner";
 
 export default function Form({ venueManager = false }) {
   const defaultValues = {
@@ -36,7 +37,10 @@ export default function Form({ venueManager = false }) {
         type="password"
         label="Confirm password"
       />
-      <Button type="submit">Register</Button>
+      <Button disabled={true} type="submit" className="flex items-center gap-4">
+        <Spinner />
+        Loading...
+      </Button>
     </FormBuilder>
   );
 }

@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="py-10 px-4 bg-accent">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap gap-10">
           <p className="text-lg font-bold">Holidaze</p>
-          <div className="flex gap-12">
+          <div className="flex md:gap-12 xl:gap-24 gap-4 flex-wrap ">
             <div className="flex flex-col gap-1 ">
               <p className="font-semibold mb-1">Explore</p>
               <Link href="/venues">Venues</Link>

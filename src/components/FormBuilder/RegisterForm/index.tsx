@@ -6,7 +6,7 @@ import Customer from "./Customer";
 import Form from "./Form";
 export default function RegisterForm() {
   return (
-    <div className="max-w-lg p-4 sm:p-8 rounded-lg shadow-md">
+    <div className="max-w-lg p-4 sm:p-8 rounded-lg shadow-md bg-white text-foreground">
       <p className=" font-semibold mb-2 text-muted-foreground">Account types</p>
       <TabsContainer
         tabs={[
