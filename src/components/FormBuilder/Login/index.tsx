@@ -26,7 +26,6 @@ export default function LoginForm({
   const defaultValues = { email: "", password: "", remember: false };
 
   const handleSubmit = async (data: z.infer<typeof loginSchema>) => {
-    console.log(data);
     const resultString = await loginAction(data.email, data.password);
     const result = JSON.parse(resultString);
 

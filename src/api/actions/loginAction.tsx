@@ -27,8 +27,6 @@ export default async function loginAction(email: string, password: string) {
       method: "GET",
       endpoint: `profiles/${result.data.data.name}`,
     });
-    console.log(profile.data?.data.venueManager);
-    console.log(typeof profile.data?.data.venueManager);
 
     cookies.set("venue_manager", profile.data?.data.venueManager);
     return JSON.stringify({

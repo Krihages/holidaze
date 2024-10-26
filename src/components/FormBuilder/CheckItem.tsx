@@ -5,9 +5,11 @@ import { Label } from "@/components/ui/label";
 export default function CheckItem({
   name,
   label,
+
 }: {
   name: string;
   label: string;
+
 }) {
   const { control } = useFormContext();
 

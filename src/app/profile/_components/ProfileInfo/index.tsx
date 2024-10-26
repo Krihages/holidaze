@@ -15,7 +15,6 @@ export default async function ProfileInfo({
   const data = await request.get({ endpoint: `profiles/${name}` });
   const user = data.data.data;
 
-  console.log(user);
   if (!data.success) {
     redirect("/login");
   }

@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { differenceInDays } from "date-fns";
 import BookVenueAction from "@/api/actions/BookVenueAction";
 import LoginModal from "@/components/Modal/Login";
+import { BookingProps } from "@/types/bookings";
+import { useTransition } from "react";
 
 export default function Booking({ venue }: { venue: VenueType }) {
   const [date, setDate] = useState<DateRange | undefined>(undefined);
@@ -22,12 +24,24 @@ export default function Booking({ venue }: { venue: VenueType }) {
   const TotalPrice = numNights(date) * venue.price;
 
   async function onSubmit() {
-    const result = await BookVenueAction(date as DateRange, venue.id);
+    const props: BookingProps = {
+      dateFrom: date?.from,
+      dateTo: date?.to,
+      venueId: venue.id,
+      guests: 1,
+    };
+    const result = await BookVenueAction(props);
+    console.log("result", result);
+
     if (result === "login") {
-      console.log("login");
       setIsOpen(true);
+      return;
+    } else if (result.success) {
+      
     }
   }
+
+  console.log(typeof date?.from);
 
   return (
     <div className="flex flex-col gap-4 max-w-[300px]">

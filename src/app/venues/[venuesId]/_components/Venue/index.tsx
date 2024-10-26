@@ -17,7 +17,7 @@ export default async function Venue({ id }: { id: string }) {
     );
   }
   const venue = data.data;
-  console.log(venue);
+
   return (
     <>
       <VenueImages images={venue?.media} />

@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
 import { randomVenueUrl } from "@/lib/helpers";
 import { StaticImageData } from "next/image";
+import imageBlur from "@/images/image-blur.jpg";
 
 export default function useCheckImage(url: string | undefined) {
   const [newUrl, setNewUrl] = useState<string | undefined | StaticImageData>(
     url
   );
 
+  console.log(url);
+
   useEffect(() => {
     const defaultVenueUrl = randomVenueUrl();
 
     if (url) {
       const img = new Image();
-      img.src = url;
-
+      img.src = url as string;
+      img.onblur = () => setNewUrl(imageBlur);
       img.onerror = () => setNewUrl(defaultVenueUrl);
       img.onload = () => setNewUrl(url);
-
-      setNewUrl(url);
     } else {
       setNewUrl(defaultVenueUrl);
     }

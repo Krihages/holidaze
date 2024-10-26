@@ -14,12 +14,12 @@ export default function VenueDetails({ venue }: { venue: VenueType }) {
         <CardHeader className="px-0 py-1 ">
           <CardTitle>{venue.name}</CardTitle>
         </CardHeader>
-        <CardDescription className=" text-base  text-foreground flex-wrap mt-0 ">
-          <span className="font-semibold mt-0 ">{venue.price} nok</span>{" "}
-          <span className="text-muted-foreground">/night</span>
-        </CardDescription>
       </div>
       <Location location={venue.location} />
+      <CardDescription className=" text-base  text-foreground flex-wrap mt-0 ">
+        <span className="font-semibold mt-0 ">{venue.price} nok</span>{" "}
+        <span className="text-muted-foreground">/night</span>
+      </CardDescription>
     </CardContent>
   );
 }

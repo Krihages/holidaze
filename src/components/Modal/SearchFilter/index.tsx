@@ -75,9 +75,9 @@ export default function SearchFilter({ params }: { params?: SearchParams }) {
 
   return (
     <Modal
-      triggerBtn="Open"
+      triggerBtn="Filter"
       headerText="Filter"
-      triggerVariant="primary"
+      triggerVariant="outline"
       description="Filter for search results"
     >
       <Modal.Main>

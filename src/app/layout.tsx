@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
         <body className="max-w-screen overflow-x-hidden">
-          <div className="grid grid-rows-[auto_1fr_auto] min-h-screen gap-y-10 text-foreground bg-background">
+          <div className="grid grid-rows-[auto_1fr_auto] min-h-screen text-foreground bg-background">
             <Header />
             <main>{children}</main>
             <Footer />

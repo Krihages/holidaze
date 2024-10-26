@@ -13,11 +13,10 @@ export default async function ProfileStats({
     endpoint: `profiles/${name}/bookings?_venue=true`,
   });
   const bookings = data.data.data;
-  console.log("bookings", bookings);
 
   return (
     <Section>
-      <AllStats bookings={bookings} manager={manager} />
+      <AllStats customerBookings={bookings} manager={manager} />
     </Section>
   );
 }

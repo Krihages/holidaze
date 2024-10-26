@@ -13,7 +13,7 @@ export default function Trigger({
   return (
     <DropdownMenuTrigger>
       <div className="flex items-center gap-2">
-        <div className="flex flex-col items-start  leading-tight">
+        <div className="hidden  md:flex flex-col items-start  leading-tight">
           <p className="font-semibold">{name}</p>
           <p className="text-sm">{manager ? "Manager" : "Customer"}</p>
         </div>

@@ -7,8 +7,6 @@ type Props = {
 };
 
 export default function Favorites({ favorites }: Props) {
-  console.log("favorites", favorites);
-
   if (favorites.length === 0) {
     return (
       <div className="text-center text-lg">You have no favorites yet..</div>

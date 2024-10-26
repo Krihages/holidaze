@@ -10,7 +10,7 @@ import { useFavorites } from "@/providers/Favorites";
 import Favorites from "./Favorites";
 
 type Props = {
-  bookings: Booking[];
+  bookings?: Booking[];
   manager: boolean;
   venues?: VenueType[];
   customerBookings?: Booking[];
@@ -33,7 +33,11 @@ export default function AllStats({
   const { favorites } = useFavorites();
 
   const items: Item[] = [
-    { type: "yourBookings", count: bookings.length, label: "Your Bookings" },
+    {
+      type: "yourBookings",
+      count: bookings?.length || 0,
+      label: "Your Bookings",
+    },
     { type: "favorites", count: favorites.length, label: "YourFavorites" },
   ];
 
@@ -45,6 +49,7 @@ export default function AllStats({
       label: "Customer Bookings",
     });
   }
+  console.log(customerBookings);
 
   return (
     <Section>
@@ -55,7 +60,9 @@ export default function AllStats({
           items={items}
         />
         <div className="flex flex-col gap-10 w-full ">
-          {activeTab === "bookings" && <Bookings bookings={bookings} />}
+          {activeTab === "customerBookings" && (
+            <Bookings bookings={customerBookings} />
+          )}
           {activeTab === "favorites" && <Favorites favorites={favorites} />}
         </div>
       </div>
