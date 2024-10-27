@@ -9,25 +9,23 @@ import {
   FormDescription,
   FormMessage,
 } from "../ui/form";
-import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
-interface FieldProps {
+type TextAreaFieldProps = {
   name: string;
   label?: string;
   description?: string;
-  type?: string;
   placeholder?: string;
-  className?: string;
-}
+  rows?: number;
+};
 
-export default function Field({
+export default function TextAreaField({
   name,
   label,
   description,
-  type = "text",
   placeholder,
-  className,
-}: FieldProps) {
+  rows = 3,
+}: TextAreaFieldProps) {
   const { control } = useFormContext();
 
   return (
@@ -35,10 +33,10 @@ export default function Field({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className={className}>
+        <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input type={type} placeholder={placeholder} {...field} />
+            <Textarea placeholder={placeholder} rows={rows} {...field} />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />

@@ -8,7 +8,7 @@ export type User = {
 
 export type Media = {
   url: string;
-  alt: string;
+  alt?: string;
 };
 
 export type Location = {

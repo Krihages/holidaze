@@ -9,14 +9,17 @@ import { buttonVariants } from "@/components/ui/button";
 
 export default function NoneSelected() {
   return (
-    <div className="text-muted-foreground flex flex-col gap-4 items-center pt-20 text-center w-full">
+    <div className="text-muted-foreground flex flex-col gap-4 items-center h-full justify-center text-center max-w-sm mx-auto">
       <p className="text-lg font-semibold">No items to display</p>
-      <p className=" max-w-sm">
+      <p>
         Add some items to your profile to see them here (favorites, bookings,
         etc)
       </p>
-      <Link href="/venues" className={buttonVariants({ variant: "primary" })}>
-        All venues
+      <Link
+        href="/venues"
+        className={`${buttonVariants({ variant: "primary" })} w-full`}
+      >
+        See all venues
       </Link>
     </div>
   );

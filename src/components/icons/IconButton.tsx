@@ -26,7 +26,7 @@ export default function IconButton({
     <Button
       aria-label={ariaLabel}
       variant={variant}
-      className={cn(`p-1 bg-opacity-50`, className)}
+      className={cn(`p-1 flex bg-opacity-50`, className)}
       onClick={
         onClick &&
         ((e) => {

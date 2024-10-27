@@ -22,11 +22,17 @@ export default async function fetchRequest({
   try {
     const URL = baseUrl ? process.env.BASE_URL : process.env.API_URL;
 
+    console.log(URL + endpoint);
+
     const response = await fetch(URL + endpoint, {
       method,
-      body: JSON.stringify(body),
+      body: body ? JSON.stringify(body) : null,
       headers: headers() as HeadersProps,
     });
+
+    if (response?.status === 204) {
+      return { success: true, data: null };
+    }
 
     if (!response.ok) {
       throw new Error(

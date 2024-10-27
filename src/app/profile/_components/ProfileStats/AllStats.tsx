@@ -52,24 +52,16 @@ export default function AllStats({
     { type: "favorites", count: favorites.length, label: "Your Favorites" }
   );
 
-  console.log(customerBookings);
-
   return (
-    <Section>
-      <div className="flex flex-col sm:flex-row gap-4 justify-between w-full ">
-        <StatOptions
-          active={activeTab}
-          setActive={setActiveTab}
-          items={items}
-        />
-        <div className="flex flex-col gap-10 w-full ">
-          {activeTab === "customerBookings" && (
-            <Bookings bookings={customerBookings} />
-          )}
+    <div className="flex flex-col sm:flex-row gap-4 p-4 justify-between  w-full ">
+      <StatOptions active={activeTab} setActive={setActiveTab} items={items} />
+      <div className="flex flex-col gap-10 w-full bg-muted rounded-lg border ">
+        <div className="p-4 flex items-center justify-center w-full h-full">
+          {activeTab === "yourBookings" && <Bookings bookings={bookings} />}
           {activeTab === "favorites" && <Favorites favorites={favorites} />}
           {activeTab === null && <NoneSelected />}
         </div>
       </div>
-    </Section>
+    </div>
   );
 }

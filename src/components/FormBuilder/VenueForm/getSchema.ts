@@ -20,7 +20,7 @@ export default function getSchema() {
       pets: z.boolean(),
       breakfast: z.boolean(),
     }),
-    rating: z.number().min(0).max(5),
+    rating: z.number().min(0).max(5).optional(),
     price: z.number().min(0),
   });
 }

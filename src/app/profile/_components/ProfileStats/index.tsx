@@ -16,7 +16,7 @@ export default async function ProfileStats({
 
   return (
     <Section>
-      <AllStats customerBookings={bookings} manager={manager} />
+      <AllStats bookings={bookings} manager={manager} />
     </Section>
   );
 }

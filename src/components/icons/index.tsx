@@ -12,7 +12,9 @@ import FavoriteIcon from "./FavoriteIcon";
 import PinIcon from "./PinIcon";
 import CheckmarkIcon from "./CheckmarkIcon";
 import { ChevronDown } from "./Chevron";
-
+import EditIcon from "./EditIcon";
+import DeleteIcon from "./DeleteIcon";
+import Star from "./Stars";
 export {
   // wrappers
   IconButton,
@@ -26,4 +28,7 @@ export {
   PinIcon,
   CheckmarkIcon,
   ChevronDown,
+  EditIcon,
+  DeleteIcon,
+  Star,
 };
