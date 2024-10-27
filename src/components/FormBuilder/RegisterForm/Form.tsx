@@ -3,24 +3,52 @@ import FormBuilder from "@/components/FormBuilder";
 import { SubmitHandler, FieldValues } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import Spinner from "@/components/Loaders/Spinner";
+import registerAction from "@/api/actions/registerAction";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function Form({ venueManager = false }) {
+// ... (resten av typene forblir uendret)
+
+type RegisterData = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  venueManager: boolean;
+};
+
+export default function Form({ manager = false }) {
   const defaultValues = {
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    manager: venueManager,
+    venueManager: manager,
   };
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (data: FieldValues) => {};
+  const handleSubmit = async (data: FieldValues) => {
+    setIsSubmitting(true);
+    try {
+      const result = await registerAction(data as RegisterData);
+
+      if (result?.success) {
+        router.push("/profile");
+      }
+    } catch (error) {
+      console.error("Registration failed:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const registerSchema = z.object({
     name: z.string().min(1),
     email: z.string().email(),
     password: z.string().min(8),
     confirmPassword: z.string().min(8),
-    manager: z.boolean(),
+    venueManager: z.boolean(),
   });
 
   return (
@@ -37,10 +65,12 @@ export default function Form({ venueManager = false }) {
         type="password"
         label="Confirm password"
       />
-      <Button disabled={true} type="submit" className="flex items-center gap-4">
-        <Spinner />
-        Loading...
-      </Button>
+      <FormBuilder.Button
+        className="flex items-center gap-4 mt-6"
+        isSubmitting={isSubmitting}
+      >
+        Submit
+      </FormBuilder.Button>
     </FormBuilder>
   );
 }

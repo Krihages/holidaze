@@ -45,7 +45,10 @@ type ItemProps = {
 function StatOption({ active, setActive, item }: ItemProps) {
   return (
     <Button
-      className="w-full shadow-sm py-6 hover:bg-info"
+      disabled={item.count === 0}
+      className={`w-full shadow-sm py-6 hover:bg-info hover:text-info-foreground hover:border-info-foreground ${
+        active === item.type && "border border-info-foreground"
+      }`}
       variant={`${active === item.type ? "info" : "outline"}`}
       onClick={() => setActive(item.type)}
     >

@@ -20,7 +20,7 @@ export default async function ProfileInfo({
   }
 
   return (
-    <div className="relative">
+    <div className="relative pt-2">
       <Banner banner={user.banner} name={user.name} />
 
       <Section>

@@ -8,6 +8,7 @@ import Section from "@/components/Section";
 import { VenueType } from "@/types/venue";
 import { useFavorites } from "@/providers/Favorites";
 import Favorites from "./Favorites";
+import NoneSelected from "./NoneSelected";
 
 type Props = {
   bookings?: Booking[];
@@ -32,15 +33,7 @@ export default function AllStats({
 
   const { favorites } = useFavorites();
 
-  const items: Item[] = [
-    {
-      type: "yourBookings",
-      count: bookings?.length || 0,
-      label: "Your Bookings",
-    },
-    { type: "favorites", count: favorites.length, label: "YourFavorites" },
-  ];
-
+  const items: Item[] = [];
   if (manager) {
     items.push({ type: "venues", count: venues?.length || 0, label: "Venues" });
     items.push({
@@ -49,6 +42,16 @@ export default function AllStats({
       label: "Customer Bookings",
     });
   }
+
+  items.push(
+    {
+      type: "yourBookings",
+      count: bookings?.length || 0,
+      label: "Your Bookings",
+    },
+    { type: "favorites", count: favorites.length, label: "Your Favorites" }
+  );
+
   console.log(customerBookings);
 
   return (
@@ -64,6 +67,7 @@ export default function AllStats({
             <Bookings bookings={customerBookings} />
           )}
           {activeTab === "favorites" && <Favorites favorites={favorites} />}
+          {activeTab === null && <NoneSelected />}
         </div>
       </div>
     </Section>

@@ -18,9 +18,7 @@ export default function VenueForm({ venueData }: { venueData?: VenueType }) {
   const values = getDefaultValues(venueData);
   const schema = getSchema();
 
-  const handleSubmit = (data: FieldValues) => {
-    console.log(data);
-  };
+  const handleSubmit = (data: FieldValues) => {};
 
   return (
     <FormBuilder

@@ -4,10 +4,17 @@ import fetchRequest from "@/api/fetch";
 import loginAction from "./loginAction";
 
 type RegisterData = {
+  name: string;
   email: string;
   password: string;
-  name: string;
+  confirmPassword: string;
   venueManager: boolean;
+};
+
+type LoginResult = {
+  success: boolean;
+  error?: string | null | { message: string };
+  data?: any | null;
 };
 
 export default async function registerAction(data: RegisterData) {
@@ -20,26 +27,34 @@ export default async function registerAction(data: RegisterData) {
     });
 
     if (result.success === false) {
-      return JSON.stringify({
+      return {
         success: false,
-        error: result.error?.toString(),
-      });
+        error: result.error,
+      };
     }
 
-    await loginAction(data.email, data.password);
+    const loginResultString = await loginAction(data.email, data.password);
+    const loginResult: LoginResult = JSON.parse(loginResultString);
 
-    return JSON.stringify({
+    if (loginResult.success === false) {
+      return {
+        success: false,
+        error: loginResult?.error?.toString(),
+      };
+    }
+
+    return {
       success: true,
-      data: result.data,
-    });
+      data: loginResult.data,
+    };
   } catch (error) {
     if (error) {
-      return JSON.stringify({ success: false, error: error });
+      return { success: false, error: error };
     } else {
-      return JSON.stringify({
+      return {
         success: false,
         error: { message: "Unknown error" },
-      });
+      };
     }
   }
 }

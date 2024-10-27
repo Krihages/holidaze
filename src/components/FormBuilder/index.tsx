@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Form } from "@/components/ui/form";
 import Field from "./Field";
 import CheckItem from "./CheckItem";
+import FormButton from "./FormButton";
 
 type FormBuilderProps = {
   children: React.ReactNode;
@@ -42,3 +43,4 @@ export default function FormBuilder({
 
 FormBuilder.Field = Field;
 FormBuilder.Checkbox = CheckItem;
+FormBuilder.Button = FormButton;

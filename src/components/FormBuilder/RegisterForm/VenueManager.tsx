@@ -11,7 +11,7 @@ export default function VenueManager() {
           venues. If you only want to book venues, switch to Customer account.
         </p>
       </div>
-      <Form venueManager={true} />
+      <Form manager={true} />
     </>
   );
 }

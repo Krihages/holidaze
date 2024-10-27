@@ -11,7 +11,7 @@ export default function Customer() {
           adding and managing your own venues, switch to Venue Manager.
         </p>
       </div>
-      <Form venueManager={false} />
+      <Form manager={false} />
     </>
   );
 }

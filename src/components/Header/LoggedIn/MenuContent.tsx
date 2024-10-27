@@ -17,17 +17,16 @@ export default function MenuContent({ name, manager }: User) {
       <p>
         <span className="font-normal">Welcome</span> <span>{name}</span>
       </p>
-      <div className="flex flex-col gap-2 py-4  ">
+      <div className="flex flex-col gap-2 py-4  font-normal border-y">
         <Link href="/profile">
-          <DropdownMenuItem className="w-full cursor-pointer flex items-center gap-4 ">
-            <AccountIcon />
-            <span>Manage profile</span>
+          <DropdownMenuItem className="w-full cursor-pointer hover:bg-info  ">
+            Your profile
           </DropdownMenuItem>
         </Link>
         {manager && (
           <Link href="/venue-manager">
-            <DropdownMenuItem className="w-full cursor-pointer font-medium">
-              Manage venue(s)
+            <DropdownMenuItem className="w-full cursor-pointer hover:bg-info ">
+              Add new venue
             </DropdownMenuItem>
           </Link>
         )}

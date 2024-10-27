@@ -8,8 +8,6 @@ export default function useCheckImage(url: string | undefined) {
     url
   );
 
-  console.log(url);
-
   useEffect(() => {
     const defaultVenueUrl = randomVenueUrl();
 

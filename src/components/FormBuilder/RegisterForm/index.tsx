@@ -3,11 +3,13 @@
 import TabsContainer from "@/components/TabsContainer";
 import VenueManager from "./VenueManager";
 import Customer from "./Customer";
-import Form from "./Form";
+
 export default function RegisterForm() {
   return (
-    <div className="max-w-lg p-4 sm:p-8 rounded-lg shadow-md bg-white text-foreground">
-      <p className=" font-semibold mb-2 text-muted-foreground">Account types</p>
+    <div className="max-w-lg p-4 sm:px-8 sm:py-10 rounded-lg shadow bg-white text-foreground">
+      <p className=" font-semibold mb-2 text-muted-foreground">
+        Select account type:
+      </p>
       <TabsContainer
         tabs={[
           { value: "customer", label: "Customer" },

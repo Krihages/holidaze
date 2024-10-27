@@ -31,17 +31,13 @@ export default function Booking({ venue }: { venue: VenueType }) {
       guests: 1,
     };
     const result = await BookVenueAction(props);
-    console.log("result", result);
 
     if (result === "login") {
       setIsOpen(true);
       return;
     } else if (result.success) {
-      
     }
   }
-
-  console.log(typeof date?.from);
 
   return (
     <div className="flex flex-col gap-4 max-w-[300px]">
