@@ -1,7 +1,3 @@
-/**
- * Type definition for color variants used in the application
- * Includes various theme colors like default, primary, secondary, etc.
- */
 export type ColorTypes =
   | "default"
   | "reverse"

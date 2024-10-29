@@ -2,6 +2,7 @@ import { VenueType } from "@/types/venue";
 import VenueCard from "./VenueCard";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+
 type Props = {
   venues: VenueType[];
   className?: string;
@@ -11,10 +12,22 @@ type Props = {
   linkText?: string;
 };
 
-/* 
-This is the grid container for displaying the venues
-// optional title and link 
-*/
+/**
+ * Grid component for displaying venue cards
+ * @param {Props} props - Component props
+ * @param {VenueType[]} props.venues - Array of venue objects to display
+ * @param {string} [props.className] - Optional className for additional styling
+ * @param {string} [props.titleText] - Optional title text to display above grid
+ * @param {string} [props.link] - Optional link URL for "view all" link
+ * @param {string} [props.linkText="view all"] - Optional text for "view all" link
+ * @returns Grid of venue cards with optional title and link
+ * @example
+ * <VenuesGrid
+ *   venues={venuesList}
+ *   titleText="Featured Venues"
+ *   link="/venues"
+ * />
+ */
 export default function VenuesGrid({
   venues,
   className,

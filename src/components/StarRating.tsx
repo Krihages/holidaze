@@ -18,6 +18,15 @@ type StarProps = {
   color?: ColorTypes;
 };
 
+/**
+ * A star rating component that allows users to rate by clicking on stars
+ * @param {Object} props - The component props
+ * @param {number} [props.maxStars=5] - Maximum number of stars to display
+ * @param {ColorTypes} [props.color="info"] - Color theme for the stars
+ * @param {number} props.rating - Current rating value
+ * @param {function} props.setRating - Function to update the rating
+ * @returns {JSX.Element} A star rating component
+ */
 export default function StarRating({
   maxStars = 5,
   color = "info",
@@ -48,7 +57,16 @@ export default function StarRating({
   );
 }
 
-// SINGLE STAR COMPONENT
+/**
+ * Individual star component used within StarRating
+ * @param {Object} props - The component props
+ * @param {number} props.starNumber - The position number of this star
+ * @param {number} props.rating - Current rating value
+ * @param {function} props.setRating - Function to update the rating
+ * @param {function} props.setTempRating - Function to update temporary rating on hover
+ * @param {ColorTypes} [props.color="info"] - Color theme for the star
+ * @returns {JSX.Element} A single star component
+ */
 function Star({
   starNumber,
   rating,

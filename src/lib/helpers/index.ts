@@ -3,8 +3,11 @@ import { getColors, ColorTypes } from "./getColors";
 import randomVenueUrl from "./randomVenueUrl";
 import dateSelectHandler from "./dateSelectHandler";
 
-// types
+/**
+ * @module helpers
+ * @description A collection of helper functions used throughout the application
+ */
+
 export { type ColorTypes };
 
-// helper functions
 export { randomLocation, getColors, randomVenueUrl, dateSelectHandler };

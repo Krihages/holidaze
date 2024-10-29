@@ -1,6 +1,3 @@
-/**
- * Number of placeholder venue images available
- */
 const NUMBER_OF_IMAGES = 10;
 import placeholder1 from "@/images/venues/placeholder1.png";
 import placeholder2 from "@/images/venues/placeholder2.png";
@@ -14,9 +11,6 @@ import placeholder9 from "@/images/venues/placeholder9.png";
 import placeholder10 from "@/images/venues/placeholder10.png";
 import { StaticImageData } from "next/image";
 
-/**
- * Array of placeholder venue images
- */
 const images = [
   placeholder1,
   placeholder2,

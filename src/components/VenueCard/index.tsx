@@ -4,6 +4,12 @@ import ImageWithActions from "./ImageWithActions";
 import VenueDetails from "./VenueDetails";
 import Link from "next/link";
 
+/**
+ * A card component that displays venue information with image and details
+ * @param {Object} props - The component props
+ * @param {VenueType} props.venue - The venue object containing venue details
+ * @returns {JSX.Element} A card component with venue image and details
+ */
 export default function VenueCard({ venue }: { venue: VenueType }) {
   return (
     <Link href={`/venues/${venue.id}`}>

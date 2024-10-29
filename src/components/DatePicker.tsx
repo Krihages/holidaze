@@ -15,6 +15,16 @@ import { dateSelectHandler } from "@/lib/helpers";
 import { datePickerProps } from "@/types/datePicker";
 import useDatePicker from "@/hooks/useDatePicker";
 
+/**
+ * A date picker component that allows users to select date ranges with disabled dates support
+ * @param {Object} props - The component props
+ * @param {string} [props.className] - Additional CSS classes to apply to the wrapper
+ * @param {Date[]} [props.disabledDates=[]] - Array of dates that should be disabled/unselectable (e.g. booked dates)
+ * @param {number} [props.price] - Price per night, used to calculate total cost for selected range
+ * @param {Object} props.date - Currently selected date range object
+ * @param {function} props.setDate - Function to update the selected date range
+ * @returns {JSX.Element} A date picker component with range selection and price calculation
+ */
 export default function DatePicker({
   className,
   disabledDates = [],

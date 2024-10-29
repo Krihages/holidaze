@@ -6,7 +6,14 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
-/* Children as the trigger (element that needs to be hovered) and message is the content */
+/**
+ * A component that displays a tooltip message when hovering over children elements
+ * @param {Object} props - The component props
+ * @param {React.ReactNode} props.children - The trigger element that needs to be hovered
+ * @param {string|React.ReactNode} props.message - The content to display in the tooltip
+ * @param {string} [props.className] - Optional CSS class names to apply to the wrapper
+ * @returns {JSX.Element} A tooltip component that shows message on hover
+ */
 export default function HoverMessage({
   children,
   message,
