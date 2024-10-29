@@ -39,6 +39,9 @@ import { ITEMS_PER_PAGE } from "@/data";
 import ConfirmAction from "../ConfirmAction";
 import deleteBooking from "@/api/actions/deleteBooking";
 
+/**
+ * Column definitions for the booking table.
+ */
 export const columns: ColumnDef<Booking>[] = [
   {
     accessorKey: "venue.name",
@@ -104,9 +107,6 @@ export const columns: ColumnDef<Booking>[] = [
             actionType="deleteBooking"
             confirmAction={() => deleteBooking(row.original.id)}
           >
-            {/*    <IconButton>
-              <DeleteIcon />
-            </IconButton> */}
             <span className=" p-1.5 rounded-sm border flex cursor-pointer h-full hover:bg-accent">
               <DeleteIcon />
             </span>
@@ -117,7 +117,19 @@ export const columns: ColumnDef<Booking>[] = [
   },
 ];
 
-export function BookingTable({ bookings }: { bookings: Booking[] }) {
+/**
+ * BookingTable component that renders a table of bookings with pagination, sorting, and filtering.
+ * Number of items per page is defined in the @/data/index.ts file as ITEMS_PER_PAGE
+ * Will display venue name, date and options (delete and edit) by default, but any of the columns can be hidden with the dropdown menu
+ * @param {Object} props - The component props
+ * @param {Booking[]} props.bookings - The list of bookings to display in the table
+ * @returns {JSX.Element} The rendered BookingTable component
+ */
+export function BookingTable({
+  bookings,
+}: {
+  bookings: Booking[];
+}): JSX.Element {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

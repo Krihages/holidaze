@@ -1,4 +1,6 @@
-// Just for importing all the different icons and exporting them so they can be accessed from same file
+/**
+ * Just for importing all the different icons and exporting them so they can be accessed from the same file
+ */
 
 // Icon wrappers (button / link)
 import IconButton from "./IconButton";
@@ -15,6 +17,10 @@ import { ChevronDown } from "./Chevron";
 import EditIcon from "./EditIcon";
 import DeleteIcon from "./DeleteIcon";
 import Star from "./Stars";
+
+/**
+ * Exporting all icons and wrappers for easy access
+ */
 export {
   // wrappers
   IconButton,

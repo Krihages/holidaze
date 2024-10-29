@@ -18,13 +18,24 @@ type FormBuilderProps = {
   className?: string;
 };
 
+/**
+ * FormBuilder component that provides a form context using react-hook-form and zod for validation.
+ *
+ * @param {Object} props - The component props
+ * @param {React.ReactNode} props.children - The form fields and components to be rendered inside the form
+ * @param {SubmitHandler<FieldValues>} props.onSubmit - The function to call when the form is submitted
+ * @param {z.ZodSchema<FieldValues>} props.zodSchema - The zod schema for form validation
+ * @param {FieldValues} props.defaultForm - The default values for the form fields
+ * @param {string} [props.className] - Additional class names for the form (optional)
+ * @returns {JSX.Element} The FormBuilder component
+ */
 export default function FormBuilder({
   children,
   onSubmit,
   zodSchema,
   defaultForm,
   className,
-}: FormBuilderProps) {
+}: FormBuilderProps): JSX.Element {
   const formMethods = useForm<FieldValues>({
     resolver: zodResolver(zodSchema),
     defaultValues: defaultForm,

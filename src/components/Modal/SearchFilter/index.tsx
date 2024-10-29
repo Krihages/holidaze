@@ -10,11 +10,29 @@ import GuestCount from "./GuestCount";
 import { useRouter } from "next/navigation";
 import FilterButton from "./FilterButton";
 
-export default function SearchFilter({ params }: { params?: SearchParams }) {
+/**
+ * SearchFilter component that renders a modal with various search filters.
+ *
+ * @param {Object} props - The component props
+ * @param {SearchParams} [props.params] - The initial search parameters
+ * @returns {JSX.Element} A modal component with search filters
+ */
+export default function SearchFilter({
+  params,
+}: {
+  params?: SearchParams;
+}): JSX.Element {
   const initialState = getInitialState(params);
   const router = useRouter();
 
-  const reducer = (state: State, action: Action) => {
+  /**
+   * Reducer function to manage the state of the search filters.
+   *
+   * @param {State} state - The current state
+   * @param {Action} action - The action to be performed
+   * @returns {State} The new state
+   */
+  const reducer = (state: State, action: Action): State => {
     switch (action.type) {
       case "price":
         return { ...state, price: action.payload };
@@ -38,6 +56,9 @@ export default function SearchFilter({ params }: { params?: SearchParams }) {
     initialState
   );
 
+  /**
+   * Applies the current filters to the search parameters and updates the URL.
+   */
   const applyFilter = useCallback(() => {
     const searchParams = new URLSearchParams();
     Object.entries(state).forEach(([key, value]) => {
@@ -93,6 +114,12 @@ export default function SearchFilter({ params }: { params?: SearchParams }) {
   );
 }
 
+/**
+ * Returns the initial state for the search filters based on the provided parameters.
+ *
+ * @param {SearchParams} [params] - The initial search parameters
+ * @returns {State} The initial state
+ */
 function getInitialState(params?: SearchParams): State {
   return {
     price: params?.price

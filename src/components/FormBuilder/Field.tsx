@@ -21,6 +21,12 @@ interface FieldProps {
   defaultValue?: string;
 }
 
+/**
+ * Field component that renders a form field with label, input, description, and message.
+ *
+ * @param {FieldProps} props - The props for the Field component.
+ * @returns {JSX.Element} The rendered Field component.
+ */
 export default function Field({
   name,
   label,
@@ -29,7 +35,7 @@ export default function Field({
   placeholder,
   className,
   defaultValue,
-}: FieldProps) {
+}: FieldProps): JSX.Element {
   const { control } = useFormContext();
 
   return (

@@ -10,11 +10,19 @@ type Props = {
   children?: React.ReactNode;
 };
 
-/* 
-Simple tabs component that can be used to switch between different tabs.
-*/
-
-export default function TabsContainer({ tabs, className, children }: Props) {
+/**
+ * Simple tabs component that can be used to switch between different tabs.
+ * @param {Object} props - The component props
+ * @param {Array} props.tabs - Array of tab objects containing value, label, and optional className
+ * @param {string} [props.className] - Additional CSS classes to apply to the TabsContainer
+ * @param {React.ReactNode} [props.children] - The content to be displayed within the TabsContainer
+ * @returns {JSX.Element} A tabs component with triggers and content area
+ */
+export default function TabsContainer({
+  tabs,
+  className,
+  children,
+}: Props): JSX.Element {
   return (
     <Tabs defaultValue={tabs[0].value} className={cn(className)}>
       <TabsList className="grid w-full grid-cols-2">
