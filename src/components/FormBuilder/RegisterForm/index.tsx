@@ -4,7 +4,12 @@ import TabsContainer from "@/components/TabsContainer";
 import VenueManager from "./VenueManager";
 import Customer from "./Customer";
 
-export default function RegisterForm() {
+/**
+ * RegisterForm component that allows users to register as either a customer or venue manager
+ * Uses TabsContainer component to switch between registration forms
+ * @returns {JSX.Element} The rendered RegisterForm component with tabs for customer and venue manager registration
+ */
+export default function RegisterForm(): JSX.Element {
   return (
     <div className="max-w-lg p-4 sm:px-8 sm:py-10 rounded-lg shadow bg-white text-foreground">
       <p className=" font-semibold mb-2 text-muted-foreground">
@@ -26,5 +31,3 @@ export default function RegisterForm() {
     </div>
   );
 }
-
-type Tab = { value: string; label: string; className?: string };

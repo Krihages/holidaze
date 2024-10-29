@@ -15,12 +15,12 @@ import StarRating from "@/components/StarRating";
 import PriceAndCapacity from "./PriceAndCapacity";
 import createVenue from "@/api/actions/createVenue";
 import { redirect } from "next/navigation";
-/* 
-this is a form for creating and/or updating a venue ment for the venue manager
-create: will be used for creating a new venue (no venueData provided so will default to empty values)
-update: will be used for updating a venue that already exists (using venueData as default values)
-*/
-
+/**
+ * A form component for creating and updating  a venue (for venue managers)
+ * @param {Object} props - The component props
+ * @param {VenueType} [props.venueData] - Optional existing venue data for updates. If not provided, form will be in create mode
+ * @returns {JSX.Element} A form for creating or updating venue information
+ */
 export default function VenueForm({ venueData }: { venueData?: VenueType }) {
   const [images, setImages] = useState<{ url: string; alt?: string }[]>(
     venueData?.media || []
@@ -28,13 +28,17 @@ export default function VenueForm({ venueData }: { venueData?: VenueType }) {
   const [rating, setRating] = useState(venueData?.rating || 0);
   const [loading, setLoading] = useState(false);
 
-  /* 
-  Separate files for getting default values (based on if venueData is provided or not) and the zod schema to make the code more readable.
-  */
+  // Get default form values and validation schema
   const values = getDefaultValues(venueData, images);
   const schema = getSchema();
 
-  const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+  /**
+   * Handles form submission for both create and update operations
+   * @param {FieldValues} data - The form data to be submitted
+   */
+  const handleSubmit: SubmitHandler<FieldValues> = async (
+    data: FieldValues
+  ) => {
     setLoading(true);
     const dataToSubmit = {
       name: data.name,
@@ -71,41 +75,36 @@ export default function VenueForm({ venueData }: { venueData?: VenueType }) {
   };
 
   return (
-    <div className="p-8 bg-white rounded-lg shadow-md max-w-xl ">
-      <h1 className="text-2xl font-bold mb-4">
-        {venueData ? "Update venue" : "Create new venue"}
-      </h1>
-      <FormBuilder
-        zodSchema={schema}
-        defaultForm={values}
-        onSubmit={handleSubmit as SubmitHandler<FieldValues>}
-        className="flex flex-col gap-8"
-      >
-        <VenueDetails />
-        <Media images={images} setImages={setImages} />
-        <PriceAndCapacity />
-        <Amenities
-          amenities={{
-            wifi: values.wifi,
-            pets: values.pets,
-            breakfast: values.breakfast,
-          }}
-        />
+    <FormBuilder
+      zodSchema={schema}
+      defaultForm={values}
+      onSubmit={handleSubmit as SubmitHandler<FieldValues>}
+      className="flex flex-col gap-8"
+    >
+      <VenueDetails />
+      <Media images={images} setImages={setImages} />
+      <PriceAndCapacity />
+      <Amenities
+        amenities={{
+          wifi: values.wifi,
+          pets: values.pets,
+          breakfast: values.breakfast,
+        }}
+      />
 
-        <Location
-          location={{
-            address: values.address,
-            city: values.city,
-            zip: values.zip,
-            country: values.country,
-          }}
-        />
-        <StarRating rating={rating} setRating={setRating} />
+      <Location
+        location={{
+          address: values.address,
+          city: values.city,
+          zip: values.zip,
+          country: values.country,
+        }}
+      />
+      <StarRating rating={rating} setRating={setRating} />
 
-        <FormBuilder.Button isSubmitting={loading}>
-          {venueData ? "Update venue" : "Create venue"}
-        </FormBuilder.Button>
-      </FormBuilder>
-    </div>
+      <FormBuilder.Button isSubmitting={loading}>
+        {venueData ? "Update venue" : "Create venue"}
+      </FormBuilder.Button>
+    </FormBuilder>
   );
 }

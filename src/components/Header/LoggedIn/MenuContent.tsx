@@ -24,7 +24,7 @@ export default function MenuContent({ name, manager }: User) {
           </DropdownMenuItem>
         </Link>
         {manager && (
-          <Link href="/venue-manager">
+          <Link href="/venues/new">
             <DropdownMenuItem className="w-full cursor-pointer hover:bg-info ">
               Add new venue
             </DropdownMenuItem>

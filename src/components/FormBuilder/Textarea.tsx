@@ -19,13 +19,23 @@ type TextAreaFieldProps = {
   rows?: number;
 };
 
+/**
+ * A form textarea field component that integrates with react-hook-form
+ * @param {TextAreaFieldProps} props - The component props
+ * @param {string} props.name - The name of the form field
+ * @param {string} [props.label] - Optional label text
+ * @param {string} [props.description] - Optional description text
+ * @param {string} [props.placeholder] - Optional placeholder text
+ * @param {number} [props.rows=3] - Number of visible text rows
+ * @returns {JSX.Element} A textarea form field component
+ */
 export default function TextAreaField({
   name,
   label,
   description,
   placeholder,
   rows = 3,
-}: TextAreaFieldProps) {
+}: TextAreaFieldProps): JSX.Element {
   const { control } = useFormContext();
 
   return (

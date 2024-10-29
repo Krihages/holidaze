@@ -14,7 +14,7 @@ type RegisterData = {
 type LoginResult = {
   success: boolean;
   error?: string | null | { message: string };
-  data?: any | null;
+  data?: { name: string; email: string } | null;
 };
 
 export default async function registerAction(data: RegisterData) {

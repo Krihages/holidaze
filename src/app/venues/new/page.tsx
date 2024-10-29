@@ -4,7 +4,10 @@ import Section from "@/components/Section";
 export default function CreateVenuePage() {
   return (
     <Section>
-      <VenueForm />
+      <div className="p-8 bg-white rounded-lg shadow-md max-w-xl ">
+        <h1 className="text-2xl font-bold mb-4">Create new venue</h1>
+        <VenueForm />
+      </div>
     </Section>
   );
 }
