@@ -5,11 +5,19 @@ interface DisabledDate {
   to: Date;
 }
 
-/* 
-- This is a helper function that handles the date selection for the date picker.
-- It checks if the selected dates are within any disabled dates and adjusts the selection accordingly.
+/**
+ * Creates a date selection handler for a date picker that handles disabled dates
+ * @param {DisabledDate[]} disabledDates - Array of date ranges that should be disabled
+ * @param {function} setTempDate - Function to set the temporary selected date range
+ * @param {function} getTempDate - Function to get the current temporary date range
+ * @returns {function} Handler function that manages date range selection
+ * @example
+ * const handleSelect = createOnSelectHandler(
+ *   [{from: new Date(2024,0,1), to: new Date(2024,0,5)}],
+ *   setDateRange,
+ *   getDateRange
+ * )
  */
-
 export default function createOnSelectHandler(
   disabledDates: DisabledDate[],
   setTempDate: (date: DateRange | undefined) => void,

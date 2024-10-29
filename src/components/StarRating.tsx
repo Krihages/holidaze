@@ -5,7 +5,8 @@ import { ColorTypes } from "@/lib/helpers";
 
 type StarRatingProps = {
   maxStars?: number;
-
+  rating: number;
+  setRating: (rating: number) => void;
   color?: ColorTypes;
 };
 
@@ -20,8 +21,9 @@ type StarProps = {
 export default function StarRating({
   maxStars = 5,
   color = "info",
+  rating,
+  setRating,
 }: StarRatingProps) {
-  const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
 
   return (

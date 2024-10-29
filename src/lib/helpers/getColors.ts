@@ -1,3 +1,7 @@
+/**
+ * Type definition for color variants used in the application
+ * Includes various theme colors like default, primary, secondary, etc.
+ */
 export type ColorTypes =
   | "default"
   | "reverse"
@@ -10,6 +14,14 @@ export type ColorTypes =
   | "success"
   | "primary-light";
 
+/**
+ * Gets the color configuration for a specific variant
+ * @param variant - The color variant to get colors for
+ * @returns An object containing background, text and icon color values
+ * @example
+ * const colors = getColors('primary')
+ * // Returns: { bg: "bg-primary", text: "text-primary-foreground", icon: "hsl(var(--primary))" }
+ */
 export function getColors(variant: ColorTypes) {
   const colors = {
     default: {

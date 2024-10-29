@@ -6,12 +6,6 @@ import Close from "./Close";
 
 import { Dialog, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
 
-Modal.Header = Header;
-Modal.Trigger = Trigger;
-Modal.Close = Close;
-Modal.Content = Content;
-Modal.Main = Main;
-
 type ModalProps = {
   children: React.ReactNode;
   className?: { content?: string; trigger?: string; header?: string };
@@ -88,5 +82,11 @@ function Modal({
     </Dialog>
   );
 }
+
+Modal.Header = Header;
+Modal.Trigger = Trigger;
+Modal.Close = Close;
+Modal.Content = Content;
+Modal.Main = Main;
 
 export default Modal;

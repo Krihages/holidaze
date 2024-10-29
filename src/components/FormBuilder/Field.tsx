@@ -18,6 +18,7 @@ interface FieldProps {
   type?: string;
   placeholder?: string;
   className?: string;
+  defaultValue?: string;
 }
 
 export default function Field({
@@ -27,6 +28,7 @@ export default function Field({
   type = "text",
   placeholder,
   className,
+  defaultValue,
 }: FieldProps) {
   const { control } = useFormContext();
 
@@ -38,7 +40,12 @@ export default function Field({
         <FormItem className={className}>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input type={type} placeholder={placeholder} {...field} />
+            <Input
+              type={type}
+              placeholder={placeholder}
+              {...field}
+              defaultValue={defaultValue}
+            />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />

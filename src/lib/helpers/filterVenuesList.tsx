@@ -1,6 +1,18 @@
 import { SearchParams } from "@/types/filter";
 import { VenueType } from "@/types/venue";
 
+/**
+ * Filters a list of venues based on search parameters
+ * @param {VenueType[]} venues - Array of venue objects to filter
+ * @param {SearchParams} filters - Search parameters to filter venues by
+ * @returns {VenueType[]} Filtered array of venues matching the search criteria
+ * @example
+ * const filteredVenues = filterVenuesList(venues, {
+ *   price: "100-200",
+ *   wifi: true,
+ *   guestCount: 2
+ * })
+ */
 export default function filterVenuesList(
   venues: VenueType[],
   filters: SearchParams

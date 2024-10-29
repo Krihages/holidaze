@@ -7,10 +7,17 @@ export default function getDefaultValues(
   return {
     name: venueData?.name ?? "",
     description: venueData?.description ?? "",
-    location: venueData?.location ?? "",
+    address: venueData?.location?.address ?? "",
+    city: venueData?.location?.city ?? "",
+    zip: venueData?.location?.zip ?? "",
+    country: venueData?.location?.country ?? "",
     media: images ?? [],
-    meta: venueData?.meta ?? {},
+    wifi: venueData?.meta?.wifi ?? false,
+    parking: venueData?.meta?.parking ?? false,
+    pets: venueData?.meta?.pets ?? false,
+    breakfast: venueData?.meta?.breakfast ?? false,
     rating: venueData?.rating ?? 0,
     price: venueData?.price ?? 0,
+    maxGuests: venueData?.maxGuests ?? 1,
   };
 }

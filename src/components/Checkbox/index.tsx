@@ -1,17 +1,19 @@
 import { cn } from "@/lib/utils";
 import { CheckboxUi } from "../ui/checkboxui";
 
+type Props = {
+  text?: string;
+  className?: string;
+  checked?: boolean;
+  onCheckedChange?: (checked: boolean) => void;
+};
+
 export default function Checkbox({
   text,
   className,
   checked,
   onCheckedChange,
-}: {
-  text?: string;
-  className?: string;
-  checked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
-}) {
+}: Props) {
   return (
     <div
       className={cn(
