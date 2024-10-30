@@ -28,6 +28,13 @@ export default async function loginAction(email: string, password: string) {
       endpoint: `profiles/${result.data.data.name}`,
     });
 
+    if (profile.success === false) {
+      return JSON.stringify({
+        success: false,
+        error: profile.error?.toString(),
+      });
+    }
+
     cookies.set("venue_manager", profile.data?.data.venueManager);
     return JSON.stringify({
       success: true,
