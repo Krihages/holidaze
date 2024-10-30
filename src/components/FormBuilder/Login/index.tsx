@@ -6,8 +6,9 @@ import { z } from "zod";
 import loginAction from "@/api/actions/loginAction";
 import { SubmitHandler, FieldValues } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useActionHandler } from "@/hooks/useActionHandler";
+
 import Link from "next/link";
+import { toast } from "@/hooks/use-toast";
 
 export default function LoginForm({
   redirectTo = "none",
@@ -15,7 +16,6 @@ export default function LoginForm({
   redirectTo?: "profile" | "none";
 }) {
   const router = useRouter();
-  const handleAction = useActionHandler();
 
   const loginSchema = z.object({
     email: z.string().email(),
@@ -30,16 +30,23 @@ export default function LoginForm({
     const result = JSON.parse(resultString);
 
     if (result.success) {
-      handleAction({
-        successMessage: "Login successful",
+      toast({
+        title: "Login successful",
+        duration: 5000,
+        description: "You are now logged in",
       });
 
       if (redirectTo === "profile") {
         router.push("/profile");
       } else router.refresh();
     } else {
-      handleAction({
-        successMessage: "Login failed",
+      toast({
+        variant: "destructive",
+        duration: 5000,
+        title: "Login failed",
+        description: result.error,
+        className:
+          "fixed bottom-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-60",
       });
     }
   };

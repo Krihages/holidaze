@@ -1,8 +1,7 @@
 import { z } from "zod";
 import FormBuilder from "@/components/FormBuilder";
 import { SubmitHandler, FieldValues } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import Spinner from "@/components/Loaders/Spinner";
+
 import registerAction from "@/api/actions/registerAction";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
