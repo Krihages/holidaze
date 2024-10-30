@@ -11,12 +11,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-
 import dialogText from "@/data/dialogText";
+import { toast } from "@/hooks/use-toast";
 
 type ConfirmActionProps = {
   actionType?: "deleteBooking";
-  confirmAction?: () => void;
+  confirmAction?: () => Promise<{
+    success?: boolean;
+    message?: string;
+  }>;
   children: React.ReactNode;
 };
 
@@ -33,8 +36,31 @@ export default function ConfirmAction({
   actionType = "deleteBooking",
   confirmAction,
   children,
-}: ConfirmActionProps) {
+}: ConfirmActionProps): JSX.Element {
   const { title, description, actionBtnText } = dialogText[actionType];
+
+  async function handleConfirmAction() {
+    if (!confirmAction) return;
+    const result = await confirmAction();
+
+    if (result?.message) {
+      if (result.success) {
+        toast({
+          title: title,
+          description: result?.message || description,
+          duration: 5000,
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: title,
+          description: result?.message,
+          duration: 5000,
+        });
+      }
+    }
+  }
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
@@ -45,7 +71,7 @@ export default function ConfirmAction({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={confirmAction}>
+          <AlertDialogAction onClick={handleConfirmAction}>
             {actionBtnText}
           </AlertDialogAction>
         </AlertDialogFooter>

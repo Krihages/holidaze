@@ -4,27 +4,27 @@ import { revalidatePath } from "next/cache";
 
 export default async function deleteBooking(id: string) {
   try {
-    console.log("id", id);
     const data = await request.delete({ endpoint: `bookings/${id}` });
-    console.log(data);
+
     if (data.success === false) {
-      return JSON.stringify({
+      return {
         success: false,
         error: data.error?.toString(),
-      });
+        message: "Error deleting booking",
+      };
     }
-    console.log(data);
-
     revalidatePath("/profile");
-    return JSON.stringify({
+    return {
       success: true,
       data: data.data,
-    });
+      message: "Booking successfully deleted",
+    };
   } catch (error) {
     console.error(error);
-    return JSON.stringify({
+    return {
       success: false,
       error: error?.toString(),
-    });
+      message: `Error deleting booking: ${error?.toString()}`,
+    };
   }
 }
