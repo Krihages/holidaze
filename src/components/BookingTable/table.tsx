@@ -85,7 +85,7 @@ export default function DataTable<TData, TValue>({
       </div>
       <div
         className={cn(
-          "rounded-md border bg-background shadow-sm min-w-[370px]",
+          "rounded-md border bg-background shadow-sm sm:min-w-[300px]",
           className
         )}
       >
