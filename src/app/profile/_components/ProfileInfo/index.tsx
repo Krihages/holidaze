@@ -1,32 +1,23 @@
 import Section from "@/components/Section";
-import cookies from "@/lib/cookies";
-import request from "@/api/requests";
+
 import { redirect } from "next/navigation";
 import ProfileHeader from "./ProfileHeader";
 import Banner from "./Banner";
+import { Profile } from "@/types/profile";
 
-export default async function ProfileInfo({
-  name,
-  manager,
-}: {
-  name: string;
-  manager: boolean;
-}) {
-  const data = await request.get({ endpoint: `profiles/${name}` });
-  const user = data.data.data;
-
-  if (!data.success) {
+export default async function ProfileInfo({ profile }: { profile: Profile }) {
+  if (!profile) {
     redirect("/login");
   }
 
   return (
     <div className="relative pt-2">
-      <Banner banner={user.banner} name={user.name} />
+      <Banner banner={profile.banner} name={profile.name} />
 
       <Section>
         <div className="absolute top-28 lg:top-44 left-[55%] -translate-x-[50%] w-full h-full mx-auto max-w-7xl ">
           <div className="flex flex-col gap-4">
-            <ProfileHeader user={user} />
+            <ProfileHeader profile={profile} />
           </div>
         </div>
       </Section>

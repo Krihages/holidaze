@@ -22,8 +22,6 @@ export default async function fetchRequest({
   try {
     const URL = baseUrl ? process.env.BASE_URL : process.env.API_URL;
 
-    console.log(URL + endpoint);
-
     const response = await fetch(URL + endpoint, {
       method,
       body: body ? JSON.stringify(body) : null,

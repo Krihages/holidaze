@@ -65,7 +65,7 @@ export default function VenueForm({ venueData }: { venueData?: VenueType }) {
       /*   await updateVenue(venueData.id, dataToSubmit); */
     } else {
       const newVenue = await createVenue(dataToSubmit as VenueType);
-      console.log(newVenue);
+
       if ((newVenue as { success: boolean }).success) {
         redirect(`/venue/${(newVenue as { data: VenueType }).data.id}`);
       }

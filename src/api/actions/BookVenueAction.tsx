@@ -18,7 +18,6 @@ export default async function bookVenueAction(props: BookingProps) {
       return { success: false, error: result.error };
     }
   } catch (error) {
-    console.log("error", error);
     return { success: false, error: error };
   }
 }

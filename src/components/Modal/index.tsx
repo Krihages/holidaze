@@ -24,6 +24,7 @@ type ModalProps = {
   description?: string;
   open?: boolean | undefined;
   isOpen?: (open: boolean) => void | undefined;
+  triggerDisabled?: boolean;
 };
 
 /**
@@ -61,6 +62,7 @@ function Modal({
   triggerBtn,
   headerText,
   triggerVariant = "none",
+  triggerDisabled = false,
   variant = "basic",
   description,
   open = undefined,
@@ -76,7 +78,11 @@ function Modal({
       onOpenChange={variant === "controlled" ? isOpen : undefined}
     >
       {variant !== "controlled" && (
-        <Modal.Trigger className={className?.trigger} variant={triggerVariant}>
+        <Modal.Trigger
+          disabled={triggerDisabled}
+          className={className?.trigger}
+          variant={triggerVariant}
+        >
           {triggerBtn}
         </Modal.Trigger>
       )}

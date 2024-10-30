@@ -56,8 +56,8 @@ export type Profile = {
   name: string;
   email: string;
   bio?: string;
-  avatar?: Avatar;
-  banner?: Banner;
+  avatar: Avatar;
+  banner: Banner;
   venueManager: boolean;
   venues?: Venue[];
   bookings?: Booking[];

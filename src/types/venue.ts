@@ -28,7 +28,7 @@ export type Booking = {
   guests: number;
   created: string;
   updated: string;
-  /*  customer?: any; */
+  customer: User;
 };
 
 export type VenueType = {

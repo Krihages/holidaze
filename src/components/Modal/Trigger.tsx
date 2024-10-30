@@ -11,6 +11,7 @@ import { buttonVariants } from "../ui/button";
 export default function Trigger({
   children,
   variant = "none",
+  disabled = false,
   className,
 }: {
   children?: React.ReactNode;
@@ -24,9 +25,11 @@ export default function Trigger({
     | "destructive"
     | "reverse"
     | "default";
+  disabled?: boolean;
 }) {
   return (
     <DialogTrigger
+      disabled={disabled}
       className={cn(
         className,
         variant !== "none"

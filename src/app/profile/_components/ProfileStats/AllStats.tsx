@@ -4,7 +4,7 @@ import { Booking } from "@/types/profile";
 import { useState } from "react";
 import StatOptions from "./StatOptions";
 import Bookings from "./Bookings";
-import Section from "@/components/Section";
+import Venues from "./Venues";
 import { VenueType } from "@/types/venue";
 import { useFavorites } from "@/providers/Favorites";
 import Favorites from "./Favorites";
@@ -13,7 +13,7 @@ import NoneSelected from "./NoneSelected";
 type Props = {
   bookings?: Booking[];
   manager: boolean;
-  venues?: VenueType[];
+  venues?: VenueType[] | undefined;
   customerBookings?: Booking[];
 };
 
@@ -35,7 +35,11 @@ export default function AllStats({
 
   const items: Item[] = [];
   if (manager) {
-    items.push({ type: "venues", count: venues?.length || 0, label: "Venues" });
+    items.push({
+      type: "venues",
+      count: venues?.length || 0,
+      label: "Your venues",
+    });
     items.push({
       type: "customerBookings",
       count: customerBookings?.length || 0,
@@ -59,6 +63,7 @@ export default function AllStats({
         <div className="p-4 flex items-center justify-center w-full h-full">
           {activeTab === "yourBookings" && <Bookings bookings={bookings} />}
           {activeTab === "favorites" && <Favorites favorites={favorites} />}
+          {activeTab === "venues" && <Venues venues={venues as VenueType[]} />}
           {activeTab === null && <NoneSelected />}
         </div>
       </div>

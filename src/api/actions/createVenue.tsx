@@ -16,7 +16,6 @@ export default async function createVenue(data: VenueType) {
       });
     }
 
-    console.log(response.data);
     return { success: true, data: response.data };
   } catch (error) {
     if (error) {

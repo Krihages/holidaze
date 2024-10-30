@@ -1,6 +1,7 @@
-import ProfileInfo from "./_components/ProfileInfo";
-import ProfileStats from "./_components/ProfileStats";
+import ProfileAndStats from "./_components/ProfileAndStats";
+
 import cookies from "@/lib/cookies";
+import { Suspense } from "react";
 
 type User = {
   profileName: string;
@@ -11,9 +12,8 @@ export default function ProfilePage() {
   const name = cookies.checkUser() as User;
 
   return (
-    <div className="flex flex-col gap-32">
-      <ProfileInfo name={name.profileName} manager={name.manager} />
-      <ProfileStats name={name.profileName} manager={name.manager} />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProfileAndStats name={name.profileName} />
+    </Suspense>
   );
 }

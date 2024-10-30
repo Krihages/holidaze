@@ -107,9 +107,9 @@ export const columns: ColumnDef<Booking>[] = [
             actionType="deleteBooking"
             confirmAction={() => deleteBooking(row.original.id)}
           >
-            <span className=" p-1.5 rounded-sm border flex cursor-pointer h-full hover:bg-accent">
+            <div className="p-1 rounded-sm border flex justify-center items-center cursor-pointer h-full hover:bg-accent">
               <DeleteIcon />
-            </span>
+            </div>
           </ConfirmAction>
         </HoverMessage>
       </div>
