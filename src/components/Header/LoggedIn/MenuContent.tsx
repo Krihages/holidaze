@@ -4,7 +4,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import LogoutButton from "@/components/Header/LoggedIn/LogoutButton";
 import Link from "next/link";
-import { AccountIcon } from "@/components/icons";
+import { ProfileIcon, HouseIcon } from "@/components/icons";
 
 type User = {
   name: string;
@@ -19,13 +19,15 @@ export default function MenuContent({ name, manager }: User) {
       </p>
       <div className="flex flex-col gap-2 py-4  font-normal border-y">
         <Link href="/profile">
-          <DropdownMenuItem className="w-full cursor-pointer hover:bg-info  ">
+          <DropdownMenuItem className="w-full cursor-pointer hover:bg-info hover:text-info-foreground flex gap-4">
+            <ProfileIcon />
             Your profile
           </DropdownMenuItem>
         </Link>
         {manager && (
           <Link href="/venues/new">
-            <DropdownMenuItem className="w-full cursor-pointer hover:bg-info ">
+            <DropdownMenuItem className="w-full cursor-pointer hover:bg-info hover:text-info-foreground flex gap-4">
+              <HouseIcon />
               Add new venue
             </DropdownMenuItem>
           </Link>

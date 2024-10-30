@@ -17,6 +17,8 @@ import { ChevronDown } from "./Chevron";
 import EditIcon from "./EditIcon";
 import DeleteIcon from "./DeleteIcon";
 import Star from "./Stars";
+import ProfileIcon from "./ProfileIcon";
+import HouseIcon from "./HouseIcon";
 
 /**
  * Exporting all icons and wrappers for easy access
@@ -37,4 +39,6 @@ export {
   EditIcon,
   DeleteIcon,
   Star,
+  ProfileIcon,
+  HouseIcon,
 };

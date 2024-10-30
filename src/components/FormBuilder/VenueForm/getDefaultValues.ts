@@ -17,7 +17,7 @@ export default function getDefaultValues(
     pets: venueData?.meta?.pets ?? false,
     breakfast: venueData?.meta?.breakfast ?? false,
     rating: venueData?.rating ?? 0,
-    price: venueData?.price ?? 0,
-    maxGuests: venueData?.maxGuests ?? 1,
+    price: venueData?.price ?? "",
+    maxGuests: venueData?.maxGuests ?? "",
   };
 }
