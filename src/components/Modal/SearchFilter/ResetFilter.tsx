@@ -2,12 +2,12 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Dispatch } from "react";
 
 import { cn } from "@/lib/utils";
-import { FilterAction } from "@/types/filter";
+import { ResetAction } from "@/types/filter";
 
 export default function ResetFilter({
   dispatch,
 }: {
-  dispatch: Dispatch<FilterAction>;
+  dispatch: Dispatch<ResetAction>;
 }) {
   return (
     <Button
