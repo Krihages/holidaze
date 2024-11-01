@@ -1,6 +1,7 @@
 import Avatar from "./Avatar";
 import { Button } from "@/components/ui/button";
 import { Profile } from "@/types/profile";
+import CreateVenue from "@/components/Modal/CreateVenue";
 
 export default function ProfileInfo({ profile }: { profile: Profile }) {
   return (
@@ -13,7 +14,7 @@ export default function ProfileInfo({ profile }: { profile: Profile }) {
         </div>
         <div className="flex gap-2">
           <Button variant="outline">Edit Profile</Button>
-          <Button>New Venue</Button>
+          <CreateVenue />
         </div>
       </div>
     </div>

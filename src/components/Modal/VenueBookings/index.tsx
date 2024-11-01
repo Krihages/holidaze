@@ -16,7 +16,7 @@ export default function VenueBookings({ venue }: { venue: VenueType }) {
   return (
     <Modal
       triggerVariant="outline"
-      triggerBtn={`Venue bookings (${bookings?.length ?? 0})`}
+      triggerBtn={`View bookings (${bookings?.length ?? 0})`}
       headerText={`bookings for: ${venue.name}`}
       triggerDisabled={bookings?.length === 0}
     >
