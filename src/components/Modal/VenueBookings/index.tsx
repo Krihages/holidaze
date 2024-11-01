@@ -20,7 +20,7 @@ export default function VenueBookings({ venue }: { venue: VenueType }) {
       headerText={`bookings for: ${venue.name}`}
       triggerDisabled={bookings?.length === 0}
     >
-      <Modal.Main className="min-h-[320px]">
+      <Modal.Main className="w-full min-h-[320px] flex flex-col items-center justify-center">
         <BookingTable columns={venueBookingsColumns} data={bookingData} />
       </Modal.Main>
     </Modal>

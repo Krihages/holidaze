@@ -69,8 +69,8 @@ export default function DataTable<TData, TValue>({
   });
 
   return (
-    <div>
-      <div className="flex items-center space-x-2 mb-4">
+    <div className="w-full max-w-lg">
+      <div className="flex items-center space-x-2 mb-4 ">
         <Checkbox
           id="showPast"
           checked={showPastBookings}
