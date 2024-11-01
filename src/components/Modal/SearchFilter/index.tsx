@@ -9,6 +9,8 @@ import { State, Action, SearchParams } from "@/types/filter";
 import GuestCount from "./GuestCount";
 import { useRouter } from "next/navigation";
 import FilterButton from "./FilterButton";
+import ResetFilter from "./ResetFilter";
+import resetFormValues from "./getInitialState";
 
 /**
  * SearchFilter component that renders a modal with various search filters.
@@ -38,14 +40,15 @@ export default function SearchFilter({
         return { ...state, price: action.payload };
       case "amenities":
         return { ...state, amenities: action.payload };
-      case "guestCount":
+      case "guests":
         return { ...state, guestCount: action.payload };
       case "query":
         return { ...state, query: action.payload };
       case "filter":
         return { ...state, shouldApplyFilter: true };
       case "reset":
-        return { ...state, shouldApplyFilter: false };
+        const resetFilterState = resetFormValues() as State;
+        return { ...resetFilterState, shouldApplyFilter: false };
       default:
         return state;
     }
@@ -107,9 +110,12 @@ export default function SearchFilter({
         <GuestCount state={state} dispatch={dispatch} />
         <Amenities state={state} dispatch={dispatch} />
       </Modal.Main>
-      <Modal.Close className="max-w-40">
-        <FilterButton dispatch={dispatch} state={state} />
-      </Modal.Close>
+      <div className="flex  gap-4">
+        <Modal.Close className="max-w-40">
+          <FilterButton dispatch={dispatch} state={state} />
+        </Modal.Close>
+        <ResetFilter dispatch={dispatch} />
+      </div>
     </Modal>
   );
 }

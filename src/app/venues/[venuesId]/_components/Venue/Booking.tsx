@@ -9,7 +9,6 @@ import { differenceInDays } from "date-fns";
 import BookVenueAction from "@/api/actions/BookVenueAction";
 import LoginModal from "@/components/Modal/Login";
 import { BookingProps } from "@/types/bookings";
-import { useTransition } from "react";
 
 export default function Booking({ venue }: { venue: VenueType }) {
   const [date, setDate] = useState<DateRange | undefined>(undefined);

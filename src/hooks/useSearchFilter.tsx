@@ -24,8 +24,8 @@ export default function useSearchFilter(params?: SearchParams) {
             ...state,
             amenities: action.payload as Amenities,
           };
-        case "guestCount":
-          return { ...state, guestCount: action.payload as number };
+        case "guests":
+          return { ...state, guests: action.payload as number };
         case "query":
           return { ...state, query: action.payload as Query };
         case "filter":

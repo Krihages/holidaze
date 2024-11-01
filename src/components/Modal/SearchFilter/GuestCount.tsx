@@ -13,7 +13,7 @@ export default function GuestCount({
 }) {
   const handleChange = (type: "increment" | "decrement") => {
     dispatch({
-      type: "guestCount",
+      type: "guests",
       payload:
         type === "increment" ? state.guestCount + 1 : state.guestCount - 1,
     });

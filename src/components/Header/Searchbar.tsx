@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import SearchIcon from "@/components/icons/SearchIcon";
 import { useState } from "react";
-import { redirect } from "next/navigation";
+
 import { useRouter } from "next/navigation";
 
 export default function Searchbar() {

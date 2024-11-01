@@ -41,7 +41,7 @@ export type GuestCountState = {
 };
 
 export type GuestCountAction = {
-  type: "guestCount";
+  type: "guests";
   payload: GuestCount;
 };
 
