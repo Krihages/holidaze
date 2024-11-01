@@ -75,9 +75,13 @@ function Modal({
   return (
     <Dialog
       open={variant === "controlled" ? open : undefined}
-      onOpenChange={variant === "controlled" ? isOpen : undefined}
+      onOpenChange={
+        variant === "controlled"
+          ? (value: boolean) => isOpen?.(value)
+          : undefined
+      }
     >
-      {variant !== "controlled" && (
+      {triggerBtn && (
         <Modal.Trigger
           disabled={triggerDisabled}
           className={className?.trigger}

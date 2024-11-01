@@ -1,5 +1,6 @@
 "use client";
 
+import EditVenue from "@/components/Modal/EditVenue";
 import { Button } from "@/components/ui/button";
 import { VenueType } from "@/types/venue";
 
@@ -16,9 +17,7 @@ export default function HostOptions({ venue }: { venue: VenueType }) {
       >
         Delete venue
       </Button>
-      <Button variant="primary" className="border-muted-foreground">
-        Edit venue
-      </Button>
+      <EditVenue venue={venue} />
     </div>
   );
 }

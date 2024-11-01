@@ -14,14 +14,24 @@ import VenueDetails from "./VenueDetails";
 import StarRating from "@/components/StarRating";
 import PriceAndCapacity from "./PriceAndCapacity";
 import createVenue from "@/api/actions/createVenue";
+
 import { redirect } from "next/navigation";
+import editVenue from "@/api/actions/EditVenue";
+import { toast } from "@/hooks/use-toast";
+
 /**
  * A form component for creating and updating  a venue (for venue managers)
  * @param {Object} props - The component props
  * @param {VenueType} [props.venueData] - Optional existing venue data for updates. If not provided, form will be in create mode
  * @returns {JSX.Element} A form for creating or updating venue information
  */
-export default function VenueForm({ venueData }: { venueData?: VenueType }) {
+export default function VenueForm({
+  venueData,
+  setOpen,
+}: {
+  venueData?: VenueType;
+  setOpen?: (value: boolean) => void;
+}) {
   const [images, setImages] = useState<{ url: string; alt?: string }[]>(
     venueData?.media || []
   );
@@ -62,12 +72,28 @@ export default function VenueForm({ venueData }: { venueData?: VenueType }) {
     };
 
     if (venueData) {
-      /*   await updateVenue(venueData.id, dataToSubmit); */
+      const updatedVenue = await editVenue(
+        dataToSubmit as VenueType,
+        venueData?.id
+      );
+      if ((updatedVenue as { success: boolean }).success) {
+        setOpen?.(false);
+        toast({
+          title: "Venue updated successfully",
+          description: "Your venue has been updated",
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Failed to update venue",
+          description: "Please try again",
+        });
+      }
     } else {
       const newVenue = await createVenue(dataToSubmit as VenueType);
 
       if ((newVenue as { success: boolean }).success) {
-        redirect(`/venue/${(newVenue as { data: VenueType }).data.id}`);
+        redirect(`/venues/${(newVenue as { data: VenueType }).data.id}`);
       }
     }
 
