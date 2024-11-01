@@ -23,12 +23,7 @@ type Item = {
   label: string;
 };
 
-export default function AllStats({
-  bookings,
-  manager,
-  venues,
-  customerBookings,
-}: Props) {
+export default function AllStats({ bookings, manager, venues }: Props) {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
   const { favorites } = useFavorites();
@@ -39,11 +34,6 @@ export default function AllStats({
       type: "venues",
       count: venues?.length || 0,
       label: "Your venues",
-    });
-    items.push({
-      type: "customerBookings",
-      count: customerBookings?.length || 0,
-      label: "Customer Bookings",
     });
   }
 
