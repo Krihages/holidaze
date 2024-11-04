@@ -10,14 +10,15 @@ import GuestCount from "./GuestCount";
 import { useRouter } from "next/navigation";
 import FilterButton from "./FilterButton";
 import ResetFilter from "./ResetFilter";
-import resetFormValues from "./getInitialState";
+import getInitialState from "./getInitialState";
 
 /**
- * SearchFilter component that renders a modal with various search filters.
+ * A modal component that provides search filtering functionality
  *
+ * @component
  * @param {Object} props - The component props
- * @param {SearchParams} [props.params] - The initial search parameters
- * @returns {JSX.Element} A modal component with search filters
+ * @param {SearchParams} [props.params] - Initial search parameters from URL query string
+ * @returns {JSX.Element} A modal with search filters including price range, amenities, guest count and search input
  */
 export default function SearchFilter({
   params,
@@ -27,12 +28,16 @@ export default function SearchFilter({
   const initialState = getInitialState(params);
   const router = useRouter();
 
+  useEffect(() => {
+    dispatch({ type: "update" });
+  }, [params]);
+
   /**
-   * Reducer function to manage the state of the search filters.
+   * Reducer function to handle state updates for the search filters
    *
-   * @param {State} state - The current state
-   * @param {Action} action - The action to be performed
-   * @returns {State} The new state
+   * @param {State} state - Current state of the filters
+   * @param {Action} action - Action object containing type and optional payload
+   * @returns {State} New state after applying the action
    */
   const reducer = (state: State, action: Action): State => {
     switch (action.type) {
@@ -47,8 +52,9 @@ export default function SearchFilter({
       case "filter":
         return { ...state, shouldApplyFilter: true };
       case "reset":
-        const resetFilterState = resetFormValues() as State;
-        return { ...resetFilterState, shouldApplyFilter: false };
+        return { ...getInitialState(), shouldApplyFilter: false };
+      case "update":
+        return { ...getInitialState(params), shouldApplyFilter: false };
       default:
         return state;
     }
@@ -60,7 +66,10 @@ export default function SearchFilter({
   );
 
   /**
-   * Applies the current filters to the search parameters and updates the URL.
+   * Constructs and applies search parameters to the URL based on current filter state
+   *
+   * @function
+   * @returns {void}
    */
   const applyFilter = useCallback(() => {
     const searchParams = new URLSearchParams();
@@ -93,7 +102,6 @@ export default function SearchFilter({
   useEffect(() => {
     if (state.shouldApplyFilter) {
       applyFilter();
-      dispatch({ type: "reset" });
     }
   }, [state.shouldApplyFilter, applyFilter]);
 
@@ -118,27 +126,4 @@ export default function SearchFilter({
       </div>
     </Modal>
   );
-}
-
-/**
- * Returns the initial state for the search filters based on the provided parameters.
- *
- * @param {SearchParams} [params] - The initial search parameters
- * @returns {State} The initial state
- */
-function getInitialState(params?: SearchParams): State {
-  return {
-    price: params?.price
-      ? ((params.price as string).split("-").map(Number) as [number, number])
-      : [0, 10000],
-    amenities: {
-      wifi: params?.wifi ? true : false,
-      parking: params?.parking ? true : false,
-      breakfast: params?.breakfast ? true : false,
-      pet: params?.pet ? true : false,
-    },
-    guestCount: params?.guestCount ? Number(params.guestCount) : 1,
-    query: params?.query ?? "",
-    shouldApplyFilter: false,
-  };
 }

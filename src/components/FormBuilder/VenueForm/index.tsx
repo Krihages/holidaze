@@ -14,8 +14,6 @@ import VenueDetails from "./VenueDetails";
 import StarRating from "@/components/StarRating";
 import PriceAndCapacity from "./PriceAndCapacity";
 import createVenue from "@/api/actions/createVenue";
-
-import { redirect } from "next/navigation";
 import editVenue from "@/api/actions/EditVenue";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";

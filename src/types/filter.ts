@@ -61,6 +61,10 @@ export type ShouldApplyFilterAction = {
   payload: boolean;
 };
 
+export type ParamsAction = {
+  type: "update";
+};
+
 export type SearchParams = {
   price?: Price | string;
   wifi?: boolean;
@@ -85,4 +89,5 @@ export type Action =
   | GuestCountAction
   | QueryAction
   | FilterAction
-  | ResetAction;
+  | ResetAction
+  | ParamsAction;
