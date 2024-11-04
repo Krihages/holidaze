@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import { ChangeEvent } from "react";
 
 interface FieldProps {
   name: string;
@@ -19,6 +20,8 @@ interface FieldProps {
   placeholder?: string;
   className?: string;
   defaultValue?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 
 /**
@@ -35,6 +38,8 @@ export default function Field({
   placeholder,
   className,
   defaultValue,
+  onChange,
+  value = undefined,
 }: FieldProps): JSX.Element {
   const { control } = useFormContext();
 
@@ -49,8 +54,9 @@ export default function Field({
             <Input
               type={type}
               placeholder={placeholder}
-              {...field}
               defaultValue={defaultValue}
+              {...(onChange ? { onChange } : field)}
+              {...(value !== undefined ? { value } : field)}
             />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}

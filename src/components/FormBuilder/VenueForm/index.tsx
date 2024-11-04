@@ -18,6 +18,7 @@ import createVenue from "@/api/actions/createVenue";
 import { redirect } from "next/navigation";
 import editVenue from "@/api/actions/EditVenue";
 import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 /**
  * A form component for creating and updating  a venue (for venue managers)
@@ -42,6 +43,7 @@ export default function VenueForm({
   const values = getDefaultValues(venueData, images);
   const schema = getSchema();
 
+  const router = useRouter();
   /**
    * Handles form submission for both create and update operations
    * @param {FieldValues} data - The form data to be submitted
@@ -49,6 +51,7 @@ export default function VenueForm({
   const handleSubmit: SubmitHandler<FieldValues> = async (
     data: FieldValues
   ) => {
+    console.log(data);
     setLoading(true);
     const dataToSubmit = {
       name: data.name,
@@ -66,10 +69,12 @@ export default function VenueForm({
         pets: data.pets,
         breakfast: data.breakfast,
       },
-      rating: rating,
-      price: data.price,
-      maxGuests: data.maxGuests,
+      rating: Number(rating),
+      price: Number(data.price),
+      maxGuests: Number(data.maxGuests),
     };
+
+    console.log("data to submit", dataToSubmit);
 
     if (venueData) {
       const updatedVenue = await editVenue(
@@ -91,10 +96,29 @@ export default function VenueForm({
       }
     } else {
       const newVenue = await createVenue(dataToSubmit as VenueType);
+      const venueResponse = JSON.parse(newVenue as string);
+      console.log("venue response", venueResponse);
 
-      if ((newVenue as { success: boolean }).success) {
-        redirect(`/venues/${(newVenue as { data: VenueType }).data.id}`);
+      if (venueResponse.success) {
+        console.log("venue response data", venueResponse.data.data);
+        if (venueResponse.data.data) {
+          router.push(`/venues/${venueResponse.data.data.id}`);
+          toast({
+            title: "Venue created successfully",
+            description: "Your venue has been created",
+          });
+        }
+      } else {
+        console.log("error", venueResponse);
+        toast({
+          variant: "destructive",
+          title: "Failed to create venue",
+          description:
+            venueResponse?.error || "Unknown error. Please try again",
+        });
       }
+
+      console.log("new venue", venueResponse);
     }
 
     setLoading(false);

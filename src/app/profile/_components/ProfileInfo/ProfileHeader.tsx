@@ -1,7 +1,8 @@
 import Avatar from "./Avatar";
-import { Button } from "@/components/ui/button";
+
 import { Profile } from "@/types/profile";
 import CreateVenue from "@/components/Modal/CreateVenue";
+import EditProfileModal from "@/components/Modal/EditProfile";
 
 export default function ProfileInfo({ profile }: { profile: Profile }) {
   return (
@@ -13,7 +14,7 @@ export default function ProfileInfo({ profile }: { profile: Profile }) {
           <p className="text-muted-foreground">{profile.email}</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline">Edit Profile</Button>
+          <EditProfileModal profile={profile} />
           <CreateVenue />
         </div>
       </div>

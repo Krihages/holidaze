@@ -6,8 +6,6 @@ import registerAction from "@/api/actions/registerAction";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// ... (resten av typene forblir uendret)
-
 type RegisterData = {
   name: string;
   email: string;

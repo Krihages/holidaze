@@ -14,7 +14,7 @@ export default function getSchema() {
     pets: z.boolean(),
     breakfast: z.boolean(),
     rating: z.number().min(0).max(5).optional(),
-    maxGuests: z.union([z.string(), z.number()]),
-    price: z.union([z.string(), z.number()]),
+    maxGuests: z.union([z.string().min(1), z.number().min(1)]),
+    price: z.union([z.string().min(1), z.number().min(1)]),
   });
 }

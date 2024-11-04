@@ -15,12 +15,13 @@ import dialogText from "@/data/dialogText";
 import { toast } from "@/hooks/use-toast";
 
 type ConfirmActionProps = {
-  actionType?: "deleteBooking";
+  actionType?: "deleteBooking" | "deleteVenue";
   confirmAction?: () => Promise<{
     success?: boolean;
     message?: string;
   }>;
   children: React.ReactNode;
+  duration?: number;
 };
 
 /**
@@ -30,12 +31,14 @@ type ConfirmActionProps = {
  * @param {"deleteBooking"} [props.actionType="deleteBooking"] - Type of action to confirm, determines dialog text (optional)
  * @param {function} [props.confirmAction] - Callback function to execute when action is confirmed (optional)
  * @param {React.ReactNode} props.children - Trigger element that opens the confirmation dialog
+ * @param {number} [props.duration=5000] - Duration of the toast notification (optional)
  * @returns {JSX.Element} A confirmation dialog component
  */
 export default function ConfirmAction({
   actionType = "deleteBooking",
   confirmAction,
   children,
+  duration = 5000,
 }: ConfirmActionProps): JSX.Element {
   const { title, description, actionBtnText } = dialogText[actionType];
 
@@ -48,14 +51,14 @@ export default function ConfirmAction({
         toast({
           title: title,
           description: result?.message || description,
-          duration: 5000,
+          duration: duration,
         });
       } else {
         toast({
           variant: "destructive",
           title: title,
           description: result?.message,
-          duration: 5000,
+          duration: duration,
         });
       }
     }

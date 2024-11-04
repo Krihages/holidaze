@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 export default function CheckItem({
   name,
   label,
-  defaultValue,
+  defaultValue = undefined,
   onChange,
 }: {
   name: string;
@@ -25,7 +25,10 @@ export default function CheckItem({
             id={name}
             defaultChecked={defaultValue}
             checked={field.value}
-            onCheckedChange={onChange ? onChange : field.onChange}
+            onCheckedChange={(checked: boolean) => {
+              onChange?.(checked);
+              field.onChange(checked);
+            }}
           />
           <Label htmlFor={name}>{label}</Label>
         </div>
