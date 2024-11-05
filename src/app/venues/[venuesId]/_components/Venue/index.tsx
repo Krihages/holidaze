@@ -8,6 +8,7 @@ import HostDetails from "./HostDetails";
 import Booking from "./Booking";
 import cookies from "@/lib/cookies";
 import OwnerOptions from "./OwnerOptions";
+import CustomerBookings from "./owner/CustomerBookings";
 
 export default async function Venue({ id }: { id: string }) {
   const username = cookies.get("profile_name");
@@ -22,6 +23,8 @@ export default async function Venue({ id }: { id: string }) {
     );
   }
   const venue = data.data;
+
+  console.log(venue.bookings);
 
   const isOwner = venue.owner.name === username;
 
@@ -43,7 +46,11 @@ export default async function Venue({ id }: { id: string }) {
             </div>
           </div>
           <div className="max-w-xl w-full self-start mx-auto lg:mx-0 lg:max-w-fit">
-            <Booking venue={venue} />
+            {isOwner ? (
+              <CustomerBookings bookings={venue.bookings} />
+            ) : (
+              <Booking venue={venue} />
+            )}
           </div>
         </div>
       </Section>
