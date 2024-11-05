@@ -12,6 +12,8 @@ const buttonVariants = cva(
         none: "",
         primary:
           "bg-primary text-primary-foreground shadow hover:bg-primary hover:opacity-90 transition-opacity duration-300",
+        "primary-light":
+          "bg-primary-light text-primary-foreground shadow  hover:opacity-90 transition-opacity duration-300",
         default:
           "bg-primary text-primary-foreground shadow hover:bg-primary hover:opacity-90 transition-opacity duration-300",
         destructive:
