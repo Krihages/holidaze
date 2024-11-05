@@ -29,7 +29,7 @@ type StarProps = {
  */
 export default function StarRating({
   maxStars = 5,
-  color = "info",
+  color = "primary-light",
   rating,
   setRating,
 }: StarRatingProps) {
@@ -72,7 +72,7 @@ function Star({
   rating,
   setRating,
   setTempRating,
-  color = "info",
+  color = "primary-light",
 }: StarProps) {
   const handleMouseEnter = () => setTempRating(starNumber);
   const handleMouseLeave = () => setTempRating(0);

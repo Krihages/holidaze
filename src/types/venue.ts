@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type User = {
   name: string;
   email: string;
@@ -7,7 +9,7 @@ export type User = {
 };
 
 export type Media = {
-  url: string;
+  url: string | StaticImageData;
   alt?: string;
 };
 

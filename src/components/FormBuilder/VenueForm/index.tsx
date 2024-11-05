@@ -132,6 +132,7 @@ export default function VenueForm({
       <VenueDetails />
       <Media images={images} setImages={setImages} />
       <PriceAndCapacity />
+      <StarRating rating={rating} setRating={setRating} />
       <Amenities
         amenities={{
           wifi: values.wifi,
@@ -148,7 +149,6 @@ export default function VenueForm({
           country: values.country,
         }}
       />
-      <StarRating rating={rating} setRating={setRating} />
 
       <FormBuilder.Button isSubmitting={loading}>
         {venueData ? "Update venue" : "Create venue"}
