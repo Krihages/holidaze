@@ -3,23 +3,15 @@
 import Modal from "..";
 import { PriceRange } from "./PriceRange";
 import SearchInput from "./SearchInput";
-import { useReducer, useEffect, useCallback } from "react";
+import { useReducer, useEffect, useCallback, useTransition } from "react";
 import Amenities from "./Amenities";
 import { State, Action, SearchParams } from "@/types/filter";
 import GuestCount from "./GuestCount";
 import { useRouter } from "next/navigation";
 import FilterButton from "./FilterButton";
 import ResetFilter from "./ResetFilter";
-import getInitialState from "./getInitialState";
+import resetFormValues from "./getInitialState";
 
-/**
- * A modal component that provides search filtering functionality
- *
- * @component
- * @param {Object} props - The component props
- * @param {SearchParams} [props.params] - Initial search parameters from URL query string
- * @returns {JSX.Element} A modal with search filters including price range, amenities, guest count and search input
- */
 export default function SearchFilter({
   params,
 }: {
@@ -27,18 +19,8 @@ export default function SearchFilter({
 }): JSX.Element {
   const initialState = getInitialState(params);
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
-  useEffect(() => {
-    dispatch({ type: "update" });
-  }, [params]);
-
-  /**
-   * Reducer function to handle state updates for the search filters
-   *
-   * @param {State} state - Current state of the filters
-   * @param {Action} action - Action object containing type and optional payload
-   * @returns {State} New state after applying the action
-   */
   const reducer = (state: State, action: Action): State => {
     switch (action.type) {
       case "price":
@@ -52,7 +34,8 @@ export default function SearchFilter({
       case "filter":
         return { ...state, shouldApplyFilter: true };
       case "reset":
-        return { ...getInitialState(), shouldApplyFilter: false };
+        const resetFilterState = resetFormValues() as State;
+        return { ...resetFilterState, shouldApplyFilter: false };
       case "update":
         return { ...getInitialState(params), shouldApplyFilter: false };
       default:
@@ -65,12 +48,6 @@ export default function SearchFilter({
     initialState
   );
 
-  /**
-   * Constructs and applies search parameters to the URL based on current filter state
-   *
-   * @function
-   * @returns {void}
-   */
   const applyFilter = useCallback(() => {
     const searchParams = new URLSearchParams();
     Object.entries(state).forEach(([key, value]) => {
@@ -101,7 +78,10 @@ export default function SearchFilter({
 
   useEffect(() => {
     if (state.shouldApplyFilter) {
-      applyFilter();
+      startTransition(() => {
+        applyFilter();
+        dispatch({ type: "update" });
+      });
     }
   }, [state.shouldApplyFilter, applyFilter]);
 
@@ -111,6 +91,8 @@ export default function SearchFilter({
       headerText="Filter"
       triggerVariant="outline"
       description="Filter for search results"
+      loading={isPending}
+      loadingText="Filtering..."
     >
       <Modal.Main>
         <SearchInput dispatch={dispatch} query={state.query} />
@@ -118,12 +100,33 @@ export default function SearchFilter({
         <GuestCount state={state} dispatch={dispatch} />
         <Amenities state={state} dispatch={dispatch} />
       </Modal.Main>
-      <div className="flex  gap-4">
+      <div className="flex gap-4">
         <Modal.Close className="max-w-40">
-          <FilterButton dispatch={dispatch} state={state} />
+          <FilterButton
+            dispatch={dispatch}
+            state={state}
+            loading={isPending as boolean}
+          />
         </Modal.Close>
         <ResetFilter dispatch={dispatch} />
       </div>
     </Modal>
   );
+}
+
+function getInitialState(params?: SearchParams): State {
+  return {
+    price: params?.price
+      ? ((params.price as string).split("-").map(Number) as [number, number])
+      : [0, 10000],
+    amenities: {
+      wifi: params?.wifi ? true : false,
+      parking: params?.parking ? true : false,
+      breakfast: params?.breakfast ? true : false,
+      pet: params?.pet ? true : false,
+    },
+    guestCount: params?.guestCount ? Number(params.guestCount) : 1,
+    query: params?.query ?? "",
+    shouldApplyFilter: false,
+  };
 }

@@ -25,7 +25,10 @@ export default async function VenuesList({ params }: { params: SearchParams }) {
 
   return (
     <Section>
-      <SearchFilter params={params} />
+      <div className="flex items-center justify-between py-4">
+        <h1 className="text-2xl font-bold">Venues</h1>
+        <SearchFilter params={params} />
+      </div>
       <VenuesGrid venues={filteredVenues} />
     </Section>
   );

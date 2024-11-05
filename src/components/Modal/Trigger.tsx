@@ -13,6 +13,8 @@ export default function Trigger({
   variant = "none",
   disabled = false,
   className,
+  loading = false,
+  loadingText = "Loading...",
 }: {
   children?: React.ReactNode;
   className?: string;
@@ -26,10 +28,12 @@ export default function Trigger({
     | "reverse"
     | "default";
   disabled?: boolean;
+  loading?: boolean;
+  loadingText?: string;
 }) {
   return (
     <DialogTrigger
-      disabled={disabled}
+      disabled={disabled || loading}
       className={cn(
         className,
         variant !== "none"
@@ -37,7 +41,7 @@ export default function Trigger({
           : "cursor-pointer p-1"
       )}
     >
-      {children}
+      {loading ? loadingText : children}
     </DialogTrigger>
   );
 }

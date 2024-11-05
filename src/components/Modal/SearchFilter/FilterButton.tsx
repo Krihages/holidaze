@@ -7,17 +7,19 @@ export default function FilterButton({
   dispatch,
   state,
   variant = "primary",
+  loading = false,
 }: {
   dispatch: Dispatch<FilterAction>;
   state: State;
   variant?: "secondary" | "primary" | "none" | "ghost" | "destructive";
+  loading?: boolean;
 }) {
   return (
     <div
       onClick={() => dispatch({ type: "filter", payload: state })}
       className={cn(buttonVariants({ variant: variant }))}
     >
-      Apply filter
+      {loading ? "Filtering..." : "Apply filter"}
     </div>
   );
 }

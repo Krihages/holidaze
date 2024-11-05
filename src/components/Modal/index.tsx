@@ -21,6 +21,8 @@ type ModalProps = {
     | "none"
     | "default"
     | "reverse";
+  loading?: boolean;
+  loadingText?: string;
   description?: string;
   open?: boolean | undefined;
   isOpen?: (open: boolean) => void | undefined;
@@ -67,6 +69,8 @@ function Modal({
   description,
   open = undefined,
   isOpen = undefined,
+  loading = false,
+  loadingText = "Loading...",
 }: ModalProps): JSX.Element {
   // "none" Variant
   if (variant === "none") return <Dialog>{children}</Dialog>;
@@ -83,9 +87,11 @@ function Modal({
     >
       {triggerBtn && (
         <Modal.Trigger
-          disabled={triggerDisabled}
+          disabled={triggerDisabled || loading}
           className={className?.trigger}
           variant={triggerVariant}
+          loading={loading}
+          loadingText={loadingText}
         >
           {triggerBtn}
         </Modal.Trigger>
