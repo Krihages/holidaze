@@ -9,10 +9,12 @@ import { differenceInDays } from "date-fns";
 import BookVenueAction from "@/api/actions/BookVenueAction";
 import LoginModal from "@/components/Modal/Login";
 import { BookingProps } from "@/types/bookings";
+import Guests from "./Guests";
 
 export default function Booking({ venue }: { venue: VenueType }) {
   const [date, setDate] = useState<DateRange | undefined>(undefined);
   const [isOpen, setIsOpen] = useState(false);
+  const [guests, setGuests] = useState(1);
 
   const bookings = venue.bookings.map((booking) => {
     return { from: new Date(booking.dateFrom), to: new Date(booking.dateTo) };
@@ -27,7 +29,7 @@ export default function Booking({ venue }: { venue: VenueType }) {
       dateFrom: date?.from,
       dateTo: date?.to,
       venueId: venue.id,
-      guests: 1,
+      guests: Number(guests),
     };
     const result = await BookVenueAction(props);
 
@@ -49,10 +51,21 @@ export default function Booking({ venue }: { venue: VenueType }) {
       />
       <div className="self-start flex flex-col gap-2 text-sm justify-end text-center text-muted-foreground w-full ">
         {numNights(date) > 0 ? (
-          <p>
-            ({numNights(date)} Nights) Total:
-            <span className="font-semibold"> {TotalPrice.toFixed(0)} NOK</span>
-          </p>
+          <>
+            <Guests
+              guests={guests}
+              setGuests={setGuests}
+              maxGuests={venue.maxGuests}
+            />
+
+            <p className="text-foreground flex flex-col items-start">
+              ({numNights(date)} Nights) Total:
+              <span className="font-semibold">
+                {" "}
+                {TotalPrice.toFixed(0)} NOK
+              </span>
+            </p>
+          </>
         ) : (
           <p className="">Select dates from Calendar</p>
         )}
