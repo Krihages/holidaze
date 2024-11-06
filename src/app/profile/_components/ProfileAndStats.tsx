@@ -10,7 +10,10 @@ export default async function ProfileAndStats({ name }: { name: string }) {
   const data = await request.get({
     endpoint: `profiles/${name}?_bookings=true&_venues=true`,
   });
+
   const profile = data.data.data;
+
+  console.log(profile);
 
   return (
     <div className="flex flex-col gap-32">

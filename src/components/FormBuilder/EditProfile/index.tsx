@@ -8,52 +8,92 @@ import { z } from "zod";
 import { useState } from "react";
 import Avatar from "./Avatar";
 import Banner from "./Banner";
+import VenueManager from "./VenueManager";
+import updateProfile from "@/api/actions/updateProfile";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
-export default function EditProfile({ profile }: { profile: Profile }) {
-  const [url, setUrl] = useState(profile.avatar.url);
-  const [bannerUrl, setBannerUrl] = useState(profile.banner.url);
-  const [venueManager, setVenueManager] = useState(profile.venueManager);
+const editProfileSchema = z.object({
+  avatar: z
+    .object({
+      url: z.string(),
+      alt: z.string().optional(),
+    })
+    .optional(),
+  banner: z
+    .object({
+      url: z.string(),
+      alt: z.string().optional(),
+    })
+    .optional(),
+  bio: z.string().optional(),
+  venueManager: z.boolean().optional(),
+});
+
+export default function EditProfile({
+  profile,
+  setOpen,
+}: {
+  profile: Profile;
+  setOpen?: (value: boolean) => void;
+}) {
+  const [avatar, setAvatar] = useState(profile.avatar || { url: "", alt: "" });
+  const [banner, setBanner] = useState(profile.banner || { url: "", alt: "" });
+  const [venueManager, setVenueManager] = useState(
+    profile.venueManager || false
+  );
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const defaultForm = {
-    avatar: { url: url, alt: profile.avatar.alt },
-    banner: profile?.banner.url,
-    bio: profile?.bio,
-    venueManager: venueManager,
+    avatar: avatar || { url: "", alt: "" },
+    banner: banner || { url: "", alt: "" },
+    venueManager: venueManager || false,
   };
 
-  console.log(url);
+  console.log(defaultForm);
 
-  const editProfileSchema = z.object({
-    avatar: z.string().optional(),
-    banner: z.string().optional(),
-    bio: z.string().optional(),
-    venueManager: z.boolean().optional(),
-  });
-
-  const handleSubmit = async (data: FieldValues) => {
-    console.log(data);
+  const handleSubmit = async () => {
+    console.log("handleSubmit");
+    const dataSubmit = {
+      avatar: avatar,
+      banner: banner,
+      venueManager: venueManager,
+    };
+    setLoading(true);
+    const res = await updateProfile(dataSubmit, profile.name);
+    if (res.success) {
+      setOpen?.(false);
+      toast({
+        title: "Success",
+        description: res.message,
+      });
+      router.refresh();
+    } else {
+      console.log(res);
+      toast({
+        title: "Error",
+        description: res.message,
+        variant: "destructive",
+      });
+    }
+    setLoading(false);
   };
 
   return (
     <FormBuilder
+      className="flex flex-col gap-10"
       zodSchema={editProfileSchema}
       defaultForm={defaultForm}
       onSubmit={handleSubmit as SubmitHandler<FieldValues>}
     >
-      <Banner url={bannerUrl} setUrl={setBannerUrl} />
-      <Avatar url={url} setUrl={setUrl} />
-      <div className="flex flex-col gap-2">
-        <FormBuilder.Checkbox
-          name="venueManager"
-          label="Venue Manager"
-          onChange={setVenueManager}
-        />{" "}
-        <span className="text-sm text-muted-foreground">
-          {venueManager
-            ? "unchecking this will change your account to a Customer account"
-            : "checking this will change your account to a Venue Manager account"}
-        </span>
-      </div>
+      <VenueManager
+        venueManager={venueManager}
+        setVenueManager={setVenueManager}
+      />
+      <Banner banner={banner} setBanner={setBanner} />
+      <Avatar avatar={avatar} setAvatar={setAvatar} />
+      <FormBuilder.Button isSubmitting={loading}>Save</FormBuilder.Button>
     </FormBuilder>
   );
 }
