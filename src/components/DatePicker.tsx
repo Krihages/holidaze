@@ -45,7 +45,7 @@ export default function DatePicker({
   } = useDatePicker({ disabledDates, initialDate: date, setDate });
 
   return (
-    <div className={cn("grid gap-2", className)}>
+    <div className={cn("grid gap-2 relative", className)}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -71,7 +71,12 @@ export default function DatePicker({
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent
+          className="w-auto p-0 max-sm:scale-[0.85] "
+          align="center"
+          side="top"
+          sideOffset={-300}
+        >
           <div className="p-3">
             <Calendar
               initialFocus
