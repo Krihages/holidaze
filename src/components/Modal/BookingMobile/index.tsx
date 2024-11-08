@@ -25,8 +25,8 @@ export default function BookingMobile({ venue }: { venue: VenueType }) {
       }}
       headerText="Booking"
     >
-      <Modal.Main className="py-10">
-        <div className="border py-10 px-6 rounded-lg shadow-md ">
+      <Modal.Main className="pb-10 h-screen flex flex-col justify-center">
+        <div className=" ">
           <BookingDetails venue={venue} />
         </div>
       </Modal.Main>

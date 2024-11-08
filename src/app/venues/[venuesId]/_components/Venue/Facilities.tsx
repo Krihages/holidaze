@@ -9,8 +9,8 @@ type Facilities = {
 
 export default function Facilities({ facilities }: { facilities: Facilities }) {
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-semibold">Facilities</h2>
+    <div className="flex flex-col gap-2 py-8 border-b border-gray-400">
+      <h2 className="font-semibold">Facilities:</h2>
       <div>
         {Object.entries(facilities).map(([key, value]) => (
           <Facility
@@ -38,7 +38,7 @@ function Facility({
       ) : (
         <XMarkIcon color="destructive" />
       )}
-      <p>{facility}</p>
+      <p className="text-muted-foreground">{facility}</p>
     </div>
   );
 }

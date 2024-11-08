@@ -24,9 +24,9 @@ export default function Location({
   }
 
   return (
-    <div className="flex items-center gap-2 text-muted-foreground">
+    <div className="flex items-center gap-1 text-muted-foreground">
       <PinIcon />
-      {locationText}
+      <span className="mt-0.5">{locationText}</span>
     </div>
   );
 }
