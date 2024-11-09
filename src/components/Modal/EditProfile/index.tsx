@@ -11,7 +11,7 @@ export default function EditProfileModal({ profile }: { profile: Profile }) {
     <Modal
       headerText="Edit Profile"
       description="Edit your profile"
-      triggerVariant="primary"
+      triggerVariant="outline"
       triggerBtn="Edit Profile"
       variant="controlled"
       open={open}
