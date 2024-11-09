@@ -1,10 +1,5 @@
-import { VenueType } from "@/types/venue";
 import FormBuilder from "..";
-export default function Location({
-  location,
-}: {
-  location: VenueType["location"];
-}) {
+export default function Location() {
   return (
     <div>
       <h3 className="text-lg font-bold mb-2">Location</h3>

@@ -7,12 +7,11 @@ import { VenueType } from "@/types/venue";
 import ImgActions from "./ImgActions";
 import useCheckImage from "@/hooks/useCheckImage";
 import imageBlur from "@/images/image-blur.jpg";
-import { StaticImageData } from "next/image";
 
 export default function ImageWithActions({ venue }: { venue: VenueType }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const newUrl = useCheckImage(venue.media[0]?.url);
+  const newUrl = useCheckImage(venue.media[0]?.url as string);
 
   return (
     <AspectRatio

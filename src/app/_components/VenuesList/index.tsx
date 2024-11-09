@@ -1,18 +1,13 @@
-import { SearchParams } from "@/types/filter";
 import request from "@/api/requests";
 import VenueCard from "@/components/VenueCard";
 import { VenueType } from "@/types/venue";
 import HandleError from "@/api/HandleError";
 
-type VenuesListProps = {
-  params: SearchParams;
-};
-
 type Error = {
   message?: string;
 };
 
-export default async function VenuesList({ params }: VenuesListProps) {
+export default async function VenuesList() {
   const { data, error } = await request.get({
     endpoint: "venues",
   });

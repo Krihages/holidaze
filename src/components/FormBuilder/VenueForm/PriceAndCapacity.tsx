@@ -14,7 +14,7 @@ export default function MaxGuests() {
           name="maxGuests"
           label="Max guests"
           type="number"
-          className="w-20"
+          className="w-28"
         />
       </div>
     </div>

@@ -1,19 +1,10 @@
 import cookies from "@/lib/cookies";
-import getMenuItems from "@/lib/helpers/getMenuItems";
 
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import Logo from "./Logo";
 import Nav from "./Nav";
 import Searchbar from "./Searchbar";
-
-type User =
-  | {
-      manager: boolean;
-      name: string;
-      token: string;
-    }
-  | false;
 
 /**
  * Header component that renders the main header of the application.
@@ -23,7 +14,6 @@ type User =
  */
 export default function Header(): JSX.Element {
   const user = cookies.checkUser();
-  const menuItems = getMenuItems(user as User);
 
   return (
     <header>

@@ -1,5 +1,4 @@
 import Form from "./Form";
-import TabsContainer from "@/components/TabsContainer";
 
 export default function VenueManager() {
   return (
