@@ -30,7 +30,7 @@ export default function VenueForm({
 }: {
   venueData?: VenueType;
   setOpen?: (value: boolean) => void;
-}) {
+}): JSX.Element {
   const [images, setImages] = useState<{ url: string; alt?: string }[]>(
     venueData?.media || []
   );

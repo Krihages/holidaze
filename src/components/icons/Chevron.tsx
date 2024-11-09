@@ -30,7 +30,7 @@ export function ChevronDown({
 
 export function ChevronUp({
   size = 14,
-  color = "none",
+  color = "default",
 }: {
   size?: number;
   color?: ColorTypes;

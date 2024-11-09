@@ -13,11 +13,11 @@ export default async function bookVenueAction(props: BookingProps) {
     const result = await request.post({ endpoint: "bookings", body: props });
 
     if (result.success) {
-      return { success: true, data: result.data };
+      return JSON.stringify({ success: true, data: result.data });
     } else {
-      return { success: false, error: result.error };
+      return JSON.stringify({ success: false, error: result.error });
     }
   } catch (error) {
-    return { success: false, error: error };
+    return JSON.stringify({ success: false, error: error });
   }
 }

@@ -13,7 +13,7 @@ import SearchIcon from "./SearchIcon";
 import FavoriteIcon from "./FavoriteIcon";
 import PinIcon from "./PinIcon";
 import CheckmarkIcon from "./CheckmarkIcon";
-import { ChevronDown } from "./Chevron";
+import { ChevronDown, ChevronUp } from "./Chevron";
 import EditIcon from "./EditIcon";
 import DeleteIcon from "./DeleteIcon";
 import Star from "./Stars";
@@ -36,6 +36,7 @@ export {
   PinIcon,
   CheckmarkIcon,
   ChevronDown,
+  ChevronUp,
   EditIcon,
   DeleteIcon,
   Star,

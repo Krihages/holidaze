@@ -27,6 +27,7 @@ type ConfirmActionProps = {
     description?: string;
     actionBtnText?: string;
   };
+  disabled?: boolean;
 };
 
 /**
@@ -45,6 +46,7 @@ export default function ConfirmAction({
   children,
   duration = 5000,
   customText = {},
+  disabled = false,
 }: ConfirmActionProps): JSX.Element {
   const { title, description, actionBtnText } = dialogText[actionType];
 
@@ -72,7 +74,9 @@ export default function ConfirmAction({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
+      <AlertDialogTrigger disabled={disabled} asChild>
+        {children}
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{customText?.title ?? title}</AlertDialogTitle>
