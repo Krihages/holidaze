@@ -12,7 +12,7 @@ export default function Bookings({ bookings }: BookingsProps) {
 
   const bookingData = [
     ...bookings.map((booking) => ({
-      id: booking.id,
+      id: booking.venue.id,
       venue: booking.venue.name,
       dates: [booking.dateFrom, booking.dateTo],
     })),
