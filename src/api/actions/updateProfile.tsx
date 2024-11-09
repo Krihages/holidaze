@@ -19,6 +19,7 @@ export default async function updateProfile(body: FieldValues, name: string) {
   }
 
   cookies.set("profile_avatar", data.data.data.avatar.url.toString());
+  cookies.set("venue_manager", data.data.data.venueManager);
 
   return {
     success: true,
