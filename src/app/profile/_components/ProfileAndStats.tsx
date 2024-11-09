@@ -13,8 +13,6 @@ export default async function ProfileAndStats({ name }: { name: string }) {
 
   const profile = data.data.data;
 
-  console.log(profile);
-
   return (
     <div className="flex flex-col gap-32">
       <ProfileInfo profile={profile} />

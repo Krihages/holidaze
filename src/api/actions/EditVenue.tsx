@@ -10,8 +10,6 @@ export default async function editVenue(venue: VenueType, id: string) {
       body: venue,
     });
 
-    console.log(response);
-
     if (!response.success) {
       return JSON.stringify({
         success: false,

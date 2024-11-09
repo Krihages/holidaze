@@ -51,10 +51,7 @@ export default function EditProfile({
     venueManager: venueManager || false,
   };
 
-  console.log(defaultForm);
-
   const handleSubmit = async () => {
-    console.log("handleSubmit");
     const dataSubmit = {
       avatar: avatar,
       banner: banner,
@@ -70,7 +67,6 @@ export default function EditProfile({
       });
       router.refresh();
     } else {
-      console.log(res);
       toast({
         title: "Error",
         description: res.message,

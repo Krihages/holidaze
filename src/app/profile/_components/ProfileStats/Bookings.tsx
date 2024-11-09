@@ -8,7 +8,6 @@ type BookingsProps = {
 };
 
 export default function Bookings({ bookings }: BookingsProps) {
-  console.log(bookings);
   if (!bookings) return null;
 
   const bookingData = [

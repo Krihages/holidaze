@@ -9,7 +9,6 @@ export default function CustomerBookings({
 }: {
   bookings: Booking[];
 }) {
-  console.log(bookings);
   const bookingData = bookings.map((booking) => ({
     id: booking.id,
     customer: booking?.customer?.name,

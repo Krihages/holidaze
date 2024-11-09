@@ -5,7 +5,6 @@ import venueBookingsColumns from "@/components/BookingTable/columns/venueBooking
 
 export default function VenueBookings({ venue }: { venue: VenueType }) {
   const bookings = venue.bookings;
-  console.log(bookings);
 
   const bookingData = bookings.map((booking) => ({
     id: booking.id,

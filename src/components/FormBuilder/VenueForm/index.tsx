@@ -49,7 +49,6 @@ export default function VenueForm({
   const handleSubmit: SubmitHandler<FieldValues> = async (
     data: FieldValues
   ) => {
-    console.log(data);
     setLoading(true);
     const dataToSubmit = {
       name: data.name,
@@ -72,8 +71,6 @@ export default function VenueForm({
       maxGuests: Number(data.maxGuests),
     };
 
-    console.log("data to submit", dataToSubmit);
-
     if (venueData) {
       const updatedVenue = await editVenue(
         dataToSubmit as VenueType,
@@ -95,10 +92,8 @@ export default function VenueForm({
     } else {
       const newVenue = await createVenue(dataToSubmit as VenueType);
       const venueResponse = JSON.parse(newVenue as string);
-      console.log("venue response", venueResponse);
 
       if (venueResponse.success) {
-        console.log("venue response data", venueResponse.data.data);
         if (venueResponse.data.data) {
           router.push(`/venues/${venueResponse.data.data.id}`);
           toast({
@@ -107,7 +102,6 @@ export default function VenueForm({
           });
         }
       } else {
-        console.log("error", venueResponse);
         toast({
           variant: "destructive",
           title: "Failed to create venue",
@@ -115,8 +109,6 @@ export default function VenueForm({
             venueResponse?.error || "Unknown error. Please try again",
         });
       }
-
-      console.log("new venue", venueResponse);
     }
 
     setLoading(false);

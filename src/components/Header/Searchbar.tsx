@@ -15,7 +15,6 @@ export default function Searchbar() {
 
   function handleSubmit() {
     if (search.length < 3) return;
-    console.log(search);
 
     router.push(`/venues?query=${search}`);
   }
@@ -29,7 +28,6 @@ export default function Searchbar() {
           value={search}
           onChange={handleSearch}
           onKeyDown={(e) => {
-            console.log(e.key);
             if (e.key === "Enter") handleSubmit();
           }}
         />
