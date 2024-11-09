@@ -1,6 +1,12 @@
 import VenueForm from "@/components/FormBuilder/VenueForm";
 import Section from "@/components/Section";
 
+export const metadata = {
+  title: "Holidaze | Create Venue",
+  description:
+    "List your property on Holidaze. Create a venue listing with photos, amenities, pricing, and location details. Start hosting and earning by sharing your unique space.",
+};
+
 export default function CreateVenuePage() {
   return (
     <Section>

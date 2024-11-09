@@ -1,6 +1,12 @@
 import LoginForm from "@/components/FormBuilder/Login";
 import Section from "@/components/Section";
 
+export const metadata = {
+  title: "Holidaze | Login",
+  description:
+    "Sign in to your Holidaze account to access your bookings, manage your venues, and explore unique accommodations. New users can easily create an account.",
+};
+
 export default function LoginPage() {
   return (
     <Section>
