@@ -18,6 +18,11 @@ import editVenue from "@/api/actions/EditVenue";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
+type MediaItem = {
+  url: string;
+  alt?: string;
+};
+
 /**
  * A form component for creating and updating  a venue (for venue managers)
  * @param {Object} props - The component props
@@ -31,8 +36,12 @@ export default function VenueForm({
   venueData?: VenueType;
   setOpen?: (value: boolean) => void;
 }): JSX.Element {
-  const [images, setImages] = useState<{ url: string; alt?: string }[]>(
-    venueData?.media || []
+  const [images, setImages] = useState<MediaItem[]>(
+    // Convert any StaticImageData to string URLs
+    venueData?.media?.map((media) => ({
+      url: typeof media.url === "string" ? media.url : media.url.src,
+      alt: media.alt,
+    })) || []
   );
   const [rating, setRating] = useState(venueData?.rating || 0);
   const [loading, setLoading] = useState(false);
@@ -132,15 +141,7 @@ export default function VenueForm({
           breakfast: values.breakfast,
         }}
       />
-
-      <Location
-        location={{
-          address: values.address,
-          city: values.city,
-          zip: values.zip,
-          country: values.country,
-        }}
-      />
+      <Location />
 
       <FormBuilder.Button isSubmitting={loading}>
         {venueData ? "Update venue" : "Create venue"}
