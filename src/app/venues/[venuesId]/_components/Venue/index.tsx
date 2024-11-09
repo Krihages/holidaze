@@ -25,10 +25,9 @@ export default async function Venue({ id }: { id: string }) {
     );
   }
   const venue = data.data;
-
-  console.log(venue.bookings);
-
+  const isLoggedIn = cookies.checkUser();
   const isOwner = venue.owner.name === username;
+  console.log("isLoggedIn", isLoggedIn);
 
   return (
     <>
@@ -51,7 +50,7 @@ export default async function Venue({ id }: { id: string }) {
             {isOwner ? (
               <CustomerBookings bookings={venue.bookings} />
             ) : (
-              <Booking venue={venue} />
+              <Booking venue={venue} isLoggedIn={isLoggedIn} />
             )}
           </div>
         </div>
