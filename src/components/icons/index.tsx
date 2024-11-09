@@ -19,7 +19,7 @@ import DeleteIcon from "./DeleteIcon";
 import Star from "./Stars";
 import ProfileIcon from "./ProfileIcon";
 import HouseIcon from "./HouseIcon";
-
+import UserGroup from "./userGroup";
 /**
  * Exporting all icons and wrappers for easy access
  */
@@ -41,4 +41,5 @@ export {
   Star,
   ProfileIcon,
   HouseIcon,
+  UserGroup,
 };

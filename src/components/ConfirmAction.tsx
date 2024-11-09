@@ -15,13 +15,18 @@ import dialogText from "@/data/dialogText";
 import { toast } from "@/hooks/use-toast";
 
 type ConfirmActionProps = {
-  actionType?: "deleteBooking" | "deleteVenue";
+  actionType?: "deleteBooking" | "deleteVenue" | "bookVenue";
   confirmAction?: () => Promise<{
     success?: boolean;
     message?: string;
   }>;
   children: React.ReactNode;
   duration?: number;
+  customText?: {
+    title?: string;
+    description?: string;
+    actionBtnText?: string;
+  };
 };
 
 /**
@@ -39,6 +44,7 @@ export default function ConfirmAction({
   confirmAction,
   children,
   duration = 5000,
+  customText = {},
 }: ConfirmActionProps): JSX.Element {
   const { title, description, actionBtnText } = dialogText[actionType];
 
@@ -69,13 +75,15 @@ export default function ConfirmAction({
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>{description}</AlertDialogDescription>
+          <AlertDialogTitle>{customText?.title ?? title}</AlertDialogTitle>
+          <AlertDialogDescription>
+            {customText?.description ?? description}
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleConfirmAction}>
-            {actionBtnText}
+            {customText?.actionBtnText ?? actionBtnText}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

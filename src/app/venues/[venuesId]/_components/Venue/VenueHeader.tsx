@@ -8,9 +8,9 @@ export default function VenueHeader({ venue }: { venue: VenueType }) {
     <div className="flex items-start flex-col gap-y-4 w-full ">
       <div className="flex flex-col gap-y-2 w-full">
         <div className="pb-8 border-b border-gray-400 flex flex-col gap-2">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-wrap">
             <h1 className="text-2xl font-bold">{venue.name}</h1>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 min-w-24">
               <Star color="primary-light" filled={true} size={22} />
               <p
                 className={
