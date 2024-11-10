@@ -9,7 +9,7 @@ export default function Avatar({
   name: string;
 }) {
   return (
-    <div className=" relative rounded-lg max-w-[230px] md:max-w-[300px] w-full  aspect-square shadow-lg border border-white  bg-white p-4">
+    <div className=" relative rounded-lg max-w-[230px] md:max-w-[300px] w-full  aspect-square shadow-lg border border-white  bg-white p-2">
       <div className="relative p-4 w-full h-full ">
         <Image
           src={media.url}

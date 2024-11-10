@@ -34,7 +34,7 @@ export default function TextAreaField({
   label,
   description,
   placeholder,
-  rows = 3,
+  rows = 6,
 }: TextAreaFieldProps): JSX.Element {
   const { control } = useFormContext();
 
@@ -46,7 +46,12 @@ export default function TextAreaField({
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Textarea placeholder={placeholder} rows={rows} {...field} />
+            <Textarea
+              placeholder={placeholder}
+              rows={rows}
+              {...field}
+              className="resize-none"
+            />
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />

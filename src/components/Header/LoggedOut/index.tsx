@@ -3,7 +3,10 @@ import Link from "next/link";
 export default function LoggedOut() {
   return (
     <div className="flex gap-2 items-center">
-      <Link href="/register">Register</Link> <p> or</p>
+      <Link className="hover:font-medium" href="/register">
+        Register
+      </Link>{" "}
+      <p> or</p>
       <LoginModal triggerVariant="reverse" />
     </div>
   );

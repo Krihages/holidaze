@@ -78,7 +78,7 @@ export default function EditProfile({
 
   return (
     <FormBuilder
-      className="flex flex-col gap-10"
+      className="flex flex-col gap-6"
       zodSchema={editProfileSchema}
       defaultForm={defaultForm}
       onSubmit={handleSubmit as SubmitHandler<FieldValues>}

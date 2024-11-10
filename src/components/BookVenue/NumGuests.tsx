@@ -35,7 +35,7 @@ export default function NumGuests({
           )}
         </div>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] max-w-full px-6">
+      <PopoverContent className="w-[300px] max-w-full px-6 pt-8 pb-6 rounded-md ">
         <div className="flex flex-col gap-6 w-full">
           <div className="flex items-center gap-4 justify-between w-full">
             <p>Adults</p>

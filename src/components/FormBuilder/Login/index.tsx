@@ -59,12 +59,12 @@ export default function LoginForm({
     >
       <FormBuilder.Field name="email" type="email" label="E-post" />
       <FormBuilder.Field name="password" type="password" label="Passord" />
-      <div className="flex items-center justify-between gap-4 flex-wrap">
+      <div className="flex items-center justify-between gap-4 flex-wrap py-2">
         <FormBuilder.Checkbox name="remember" label="Remember me" />
         <button
           type="button"
           disabled={true}
-          className="text-sm  text-blue-600 underline"
+          className="text-sm  text-blue-600 hover:underline leading-4"
         >
           Forgot password?
         </button>

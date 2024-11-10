@@ -55,6 +55,7 @@ export default function Field({
               type={type}
               placeholder={placeholder}
               defaultValue={defaultValue}
+              className="mt-2"
               {...(onChange ? { onChange } : field)}
               {...(value !== undefined ? { value } : field)}
             />

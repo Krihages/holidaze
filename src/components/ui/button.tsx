@@ -28,7 +28,7 @@ const buttonVariants = cva(
         accent:
           "bg-accent text-accent-foreground border border-accent-foreground shadow-sm hover:bg-accent hover:bg-opacity-80",
         reverse:
-          "bg-background text-foreground  hover:bg-background hover:bg-opacity-80 transition-opacity duration-300 font-semibold",
+          "bg-background text-foreground  hover:bg-white hover:bg-opacity-90 transition-all duration-300 font-semibold",
       },
 
       size: {

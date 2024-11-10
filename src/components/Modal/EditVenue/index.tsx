@@ -15,6 +15,7 @@ export default function EditVenue({ venue }: { venue: VenueType }) {
       variant="controlled"
       open={open}
       isOpen={setOpen}
+      className={{ content: "max-w-2xl" }}
     >
       <VenueForm venueData={venue} setOpen={setOpen} />
     </Modal>

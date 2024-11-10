@@ -15,15 +15,15 @@ export default function SearchInput({
 }) {
   return (
     <div className="relative">
-      <Label className="text-sm text-muted-foreground" htmlFor="search">
-        Search:
+      <Label className="font-semibold" htmlFor="search">
+        Search
       </Label>
       <Input
         id="search"
         type="search"
         name="search"
         placeholder="Where are you going?"
-        className="py-6 px-4"
+        className="py-6 px-4 mt-2"
         value={query}
         onChange={(e) =>
           dispatch({
@@ -32,7 +32,7 @@ export default function SearchInput({
           })
         }
       />
-      <div className="absolute top-1/2  right-3">
+      <div className="absolute bottom-3 right-3">
         <SearchIcon color="muted" />
       </div>
     </div>

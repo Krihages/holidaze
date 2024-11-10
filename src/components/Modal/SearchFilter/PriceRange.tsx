@@ -16,11 +16,11 @@ export function PriceRange({ dispatch, price }: PriceRangeProps) {
   const [value, setValue] = useState(price);
 
   return (
-    <div className="flex flex-col gap-2  text-sm">
+    <div className="flex flex-col gap-4 ">
       <div>
-        <p className="  flex justify-between text-muted-foreground">
+        <p className=" font-semibold  flex justify-between ">
           Price range{" "}
-          <span className="text-muted-foreground font-normal">
+          <span className="text-muted-foreground font-normal ">
             (NOK / night)
           </span>
         </p>

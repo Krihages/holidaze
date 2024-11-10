@@ -27,7 +27,7 @@ export default function Avatar({
       <img
         src={avatar?.url || "/images/placeholder-img.jpg"}
         alt={avatar?.alt || "Avatar"}
-        className="rounded-full object-cover h-40 w-40 max-h-40 max-w-40 shadow-md border"
+        className="rounded-full object-cover h-40 w-40 max-h-40 max-w-40 shadow-md border mt-2"
         onError={() =>
           setAvatar({ ...avatar, url: "/images/placeholder-img.jpg" })
         }

@@ -34,7 +34,7 @@ export default async function Venue({ id }: { id: string }) {
       <VenueImages images={venue?.media} />
       <Section>
         {isOwner && (
-          <div className="flex justify-end mb-4 max-w-xl">
+          <div className="flex justify-end mb-4 ">
             <OwnerOptions venue={venue} />
           </div>
         )}

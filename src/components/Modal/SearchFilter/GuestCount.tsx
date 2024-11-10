@@ -22,7 +22,7 @@ export default function GuestCount({
   return (
     <div className="flex flex-col gap-2">
       <p className="font-semibold">Number of guests</p>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center w-32 justify-between">
         <Button
           variant="ghost"
           className="w-8 h-8  rounded-full border border-muted-foreground shadow-lg"
@@ -31,7 +31,7 @@ export default function GuestCount({
         >
           -
         </Button>
-        <p className="text-lg font-medium">{state.guestCount}</p>
+        <p className="">{state.guestCount}</p>
         <Button
           variant="ghost"
           className="w-8 h-8  rounded-full border border-muted-foreground shadow-lg"

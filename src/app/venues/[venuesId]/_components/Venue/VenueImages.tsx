@@ -60,7 +60,7 @@ function MultipleImages({ images }: { images: Media[] }) {
               loading={index === 0 ? "eager" : "lazy"}
               priority={index === 0}
             />
-            <div className="absolute top-2 right-2 bg-info shadow-md opacity-90 py-2 px-4 rounded-md ">
+            <div className="absolute top-2 right-2 bg-white shadow-md  py-2 px-4 rounded-md ">
               Image {index + 1} of {images.length}
             </div>
           </CarouselItem>
