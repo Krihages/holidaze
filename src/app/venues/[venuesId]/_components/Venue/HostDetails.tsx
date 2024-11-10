@@ -10,7 +10,7 @@ export default function HostDetails({ venue }: { venue: VenueType }) {
           sizes="100"
           src={venue.owner?.avatar.url as string}
           alt={venue.owner?.avatar?.alt ?? `avatar alt text`}
-          className="cursor-pointer "
+          className="object-cover"
         />
         <AvatarFallback className="text-foreground">
           {venue.owner.name.slice(0, 2).toUpperCase()}
