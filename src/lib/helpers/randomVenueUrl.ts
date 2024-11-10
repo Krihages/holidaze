@@ -1,14 +1,14 @@
 const NUMBER_OF_IMAGES = 10;
-import placeholder1 from "@/images/venues/placeholder1.png";
-import placeholder2 from "@/images/venues/placeholder2.png";
-import placeholder3 from "@/images/venues/placeholder3.png";
-import placeholder4 from "@/images/venues/placeholder4.png";
-import placeholder5 from "@/images/venues/placeholder5.png";
-import placeholder6 from "@/images/venues/placeholder6.png";
-import placeholder7 from "@/images/venues/placeholder7.png";
-import placeholder8 from "@/images/venues/placeholder8.png";
-import placeholder9 from "@/images/venues/placeholder9.png";
-import placeholder10 from "@/images/venues/placeholder10.png";
+import placeholder1 from "@/images/venues/placeholder1.jpg";
+import placeholder2 from "@/images/venues/placeholder2.jpg";
+import placeholder3 from "@/images/venues/placeholder3.jpg";
+import placeholder4 from "@/images/venues/placeholder4.jpg";
+import placeholder5 from "@/images/venues/placeholder5.jpg";
+import placeholder6 from "@/images/venues/placeholder6.jpg";
+import placeholder7 from "@/images/venues/placeholder7.jpg";
+import placeholder8 from "@/images/venues/placeholder8.jpg";
+import placeholder9 from "@/images/venues/placeholder9.jpg";
+import placeholder10 from "@/images/venues/placeholder10.jpg";
 import { StaticImageData } from "next/image";
 
 const images = [
