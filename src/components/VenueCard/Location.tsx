@@ -9,7 +9,13 @@ export default function Location({
 }) {
   let locationText: string | JSX.Element;
 
-  if (location.country && location.city) {
+  if (
+    // This is just to prevent showing random long strings in the location field
+    (location.country && location?.country?.length > 25) ||
+    (location.city && location.city.length > 25)
+  ) {
+    locationText = randomLocation();
+  } else if (location.country && location.city) {
     locationText = (
       <div>
         <span>{location.city}</span>, <span>{location.country}</span>
