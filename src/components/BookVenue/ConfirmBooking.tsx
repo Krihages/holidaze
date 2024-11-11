@@ -64,6 +64,7 @@ export default function ConfirmBooking({
       toast({
         title: "Successfully booked venue",
         description: `dates: ${dates?.from?.toLocaleDateString()} - ${dates?.to?.toLocaleDateString()}. You will receive an confirmation email with the booking details.`,
+        duration: 30000,
       });
     } else {
       toast({

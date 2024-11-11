@@ -27,7 +27,7 @@ export default function Venues({ venues }: Props) {
         items={allVenues}
         itemsPerPage={4}
         renderItems={(items) => (
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4 w-full max-w-3xl auto-rows-fr ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4 w-full max-w-3xl auto-rows-fr pb-6">
             {items}
           </div>
         )}
