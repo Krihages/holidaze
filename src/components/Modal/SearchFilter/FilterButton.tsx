@@ -8,7 +8,6 @@ export default function FilterButton({
   state,
   variant = "primary",
   loading = false,
-  onClick,
 }: {
   dispatch: Dispatch<FilterAction>;
   state: State;

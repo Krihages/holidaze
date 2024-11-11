@@ -1,6 +1,6 @@
 import DatePicker from "@/components/DatePicker";
 import { DateRange } from "react-day-picker";
-import { State, DateAction } from "@/types/filter";
+import { DateAction } from "@/types/filter";
 import { useState, useEffect } from "react";
 
 export default function SelectDates({
