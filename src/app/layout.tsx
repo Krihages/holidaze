@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Providers from "@/providers";
 import { Toaster } from "@/components/ui/toaster";
 import { Montserrat } from "next/font/google";
+import { SearchParams } from "@/types/filter";
 
 export const metadata: Metadata = {
   title: "Holidaze",

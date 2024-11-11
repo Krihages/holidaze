@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Destination from "./Destination";
 import Dates from "./Dates";
 import { useRouter } from "next/navigation";
@@ -8,30 +8,45 @@ import { DateRange } from "react-day-picker";
 import Guests from "./Guests";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
+import dateParse from "@/lib/helpers/dateParse";
+import { useSearchParams } from "next/navigation";
 
 export default function Searchbar() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const dateParam = searchParams.get("date");
+  const queryParam = searchParams.get("query");
+  const guestCountParam = searchParams.get("guestCount");
 
-  const [destination, setDestination] = useState("");
-  const [date, setDate] = useState<DateRange | undefined>(undefined);
-  const [guests, setGuests] = useState(0);
+  const [destination, setDestination] = useState(queryParam || "");
+  const [date, setDate] = useState<DateRange | undefined>(
+    dateParam ? dateParse(dateParam) : undefined
+  );
+  const [guests, setGuests] = useState(
+    guestCountParam ? parseInt(guestCountParam) : 0
+  );
+
+  // Update the state only if the search params change to avoid unnecessary re-renders
+  useEffect(() => {
+    const dateParam = searchParams.get("date");
+    const queryParam = searchParams.get("query");
+    const guestCountParam = searchParams.get("guestCount");
+
+    setDestination(queryParam || "");
+    setDate(dateParam ? dateParse(dateParam) : undefined);
+    setGuests(guestCountParam ? parseInt(guestCountParam) : 0);
+  }, [searchParams]);
 
   function handleSearch() {
-    if (destination === "" && date === undefined && guests === 0) return;
-
     const dateString =
       date?.from && date?.to
         ? `${format(date.from, "d.MM.yy")}-${format(date.to, "d.MM.yy")}`
         : "";
-    const guestsString = guests !== 0 ? guests.toString() : "";
+    const guestsString = guests > 1 ? guests.toString() : "";
 
     const url = `/venues?${destination !== "" ? `query=${destination}&` : ""}${
       dateString !== "" ? `date=${dateString}&` : ""
     }${guestsString !== "" ? `guestCount=${guestsString}` : ""}`;
-
-    setDestination("");
-    setDate(undefined);
-    setGuests(0);
 
     router.push(url);
   }
@@ -45,11 +60,7 @@ export default function Searchbar() {
         />
         <Dates dates={date} setDates={setDate} />
         <Guests guests={guests} setGuests={setGuests} />
-        <Button
-          className="rounded-full py-5 px-8"
-          onClick={handleSearch}
-          disabled={destination === "" && date === undefined && guests === 0}
-        >
+        <Button className="rounded-full py-5 px-8" onClick={handleSearch}>
           Search
         </Button>
       </div>

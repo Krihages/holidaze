@@ -2,12 +2,20 @@ import { SearchParams } from "@/types/filter";
 import { Badge } from "@/components/ui/badge";
 import HoverMessage from "@/components/HoverMessage";
 
-export default function SearchedBadges({ params }: { params: SearchParams }) {
+export default function SearchedBadges({
+  params,
+  numberOfVenues,
+}: {
+  params: SearchParams;
+  numberOfVenues: number;
+}) {
   if (Object.keys(params).length === 0) return null;
 
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-sm text-muted-foreground">Search result for:</p>
+      <p className="text-sm text-muted-foreground">
+        Search result ({numberOfVenues} venues):
+      </p>
       <div className="flex gap-2 flex-wrap">
         {Object.entries(params).map(([key, value]) => {
           if (key === "guestCount") {

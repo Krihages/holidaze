@@ -1,3 +1,4 @@
+import dateParse from "@/lib/helpers/dateParse";
 import { SearchParams, State } from "@/types/filter";
 
 /**
@@ -21,6 +22,7 @@ export default function getInitialState(params?: SearchParams): State {
     },
     guestCount: params?.guestCount ? Number(params.guestCount) : 1,
     query: params?.query ?? "",
+    date: params?.date ? dateParse(params.date) : undefined,
     shouldApplyFilter: false,
   };
 }

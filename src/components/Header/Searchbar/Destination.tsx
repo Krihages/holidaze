@@ -27,11 +27,9 @@ export default function Destination({
             onClick={() => setIsOpen(!isOpen)}
           >
             {destination !== "" ? (
-              <div className="flex flex-col items-center ">
-                <span className="text-sm text-muted-foreground">
-                  Search query:
-                </span>
-                <span className="text-foreground">{destination}</span>
+              <div className="flex gap-2 items-center ">
+                <span className="text-sm text-muted-foreground ">Query:</span>
+                <span className="text-foreground ">{destination}</span>
               </div>
             ) : (
               "Where to?"
@@ -48,7 +46,7 @@ export default function Destination({
               placeholder="City, region, country etc.."
               className=""
               value={destination}
-              maxLength={20}
+              maxLength={16}
               onChange={(e) => setDestination(e.target.value)}
             />
           </div>

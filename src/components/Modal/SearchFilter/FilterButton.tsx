@@ -8,11 +8,13 @@ export default function FilterButton({
   state,
   variant = "primary",
   loading = false,
+  onClick,
 }: {
   dispatch: Dispatch<FilterAction>;
   state: State;
   variant?: "secondary" | "primary" | "none" | "ghost" | "destructive";
   loading?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <div

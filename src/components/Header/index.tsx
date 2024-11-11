@@ -4,14 +4,14 @@ import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import Logo from "./Logo";
 import Searchbar from "./Searchbar";
-
+import { SearchParams } from "@/types/filter";
 /**
  * Header component that renders the main header of the application.
  * Renders the Logo and User-specific components (LoggedIn or LoggedOut)
  * Some of the logged in components also depends on if the user is a venue manager or customer
  * @returns {JSX.Element} The header component
  */
-export default function Header(): JSX.Element {
+export default function Header() {
   const user = cookies.checkUser();
 
   return (

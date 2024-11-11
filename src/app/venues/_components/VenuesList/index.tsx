@@ -11,7 +11,7 @@ type Error = {
 };
 export default async function VenuesList({ params }: { params: SearchParams }) {
   const { data, error } = await request.get({
-    endpoint: "venues?sort=created&sortOrder=desc",
+    endpoint: "venues?sort=created&sortOrder=desc&_bookings=true",
   });
   if (error) {
     return (
@@ -27,7 +27,10 @@ export default async function VenuesList({ params }: { params: SearchParams }) {
     <Section>
       <div className="flex items-center justify-between py-4">
         {Object.keys(params).length > 0 ? (
-          <SearchedBadges params={params} />
+          <SearchedBadges
+            params={params}
+            numberOfVenues={filteredVenues.length}
+          />
         ) : (
           <h1 className="text-2xl font-bold">Venues</h1>
         )}

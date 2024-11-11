@@ -1,3 +1,5 @@
+import { DateRange } from "react-day-picker";
+
 export type Query = string;
 
 export type QueryAction = {
@@ -73,6 +75,7 @@ export type SearchParams = {
   pet?: boolean;
   guestCount?: GuestCount;
   query?: Query;
+  date?: string;
 };
 
 export type State = {
@@ -81,6 +84,12 @@ export type State = {
   guestCount: GuestCount;
   query: Query;
   shouldApplyFilter: boolean;
+  date?: DateRange | undefined;
+};
+
+export type DateAction = {
+  type: "date";
+  payload: DateRange | undefined;
 };
 
 export type Action =
@@ -90,4 +99,5 @@ export type Action =
   | QueryAction
   | FilterAction
   | ResetAction
-  | ParamsAction;
+  | ParamsAction
+  | DateAction;
