@@ -13,15 +13,19 @@ export default function SearchedBadges({ params }: { params: SearchParams }) {
           if (key === "guestCount") {
             return (
               <HoverMessage
+                key={key}
                 message={`Venue must be able to accommodate a minimum of ${value} guests`}
               >
-                <Badge key={key}>{value} guests</Badge>
+                <Badge>{value} guests</Badge>
               </HoverMessage>
             );
           } else if (key === "date") {
             return (
-              <HoverMessage message={`Selected dates (check in - check out)`}>
-                <Badge key={key}>{value}</Badge>
+              <HoverMessage
+                key={key}
+                message={`Selected dates (check in - check out)`}
+              >
+                <Badge>{value}</Badge>
               </HoverMessage>
             );
           } else if (
@@ -44,8 +48,8 @@ export default function SearchedBadges({ params }: { params: SearchParams }) {
             return <Badge key={key}>{value} NOK / night</Badge>;
           } else if (key === "query") {
             return (
-              <HoverMessage message={`Search query for: "${value}"`}>
-                <Badge key={key}>&quot;{value}&quot;</Badge>
+              <HoverMessage key={key} message={`Search query for: "${value}"`}>
+                <Badge>&quot;{value}&quot;</Badge>
               </HoverMessage>
             );
           }
