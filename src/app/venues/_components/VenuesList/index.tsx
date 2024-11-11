@@ -5,7 +5,7 @@ import VenuesGrid from "@/components/VenuesGrid";
 import filterVenuesList from "@/lib/helpers/filterVenuesList";
 import { SearchParams } from "@/types/filter";
 import SearchFilter from "@/components/Modal/SearchFilter";
-
+import SearchedBadges from "./SearchedBadges";
 type Error = {
   message?: string;
 };
@@ -26,9 +26,14 @@ export default async function VenuesList({ params }: { params: SearchParams }) {
   return (
     <Section>
       <div className="flex items-center justify-between py-4">
-        <h1 className="text-2xl font-bold">Venues</h1>
+        {Object.keys(params).length > 0 ? (
+          <SearchedBadges params={params} />
+        ) : (
+          <h1 className="text-2xl font-bold">Venues</h1>
+        )}
         <SearchFilter params={params} />
       </div>
+
       <VenuesGrid venues={filteredVenues} />
     </Section>
   );

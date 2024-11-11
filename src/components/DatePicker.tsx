@@ -31,6 +31,8 @@ export default function DatePicker({
   price,
   date,
   setDate,
+  initialText = "No dates selected",
+  offset = 5,
 }: datePickerProps) {
   const today = startOfDay(new Date());
   const {
@@ -45,7 +47,7 @@ export default function DatePicker({
   } = useDatePicker({ disabledDates, initialDate: date, setDate });
 
   return (
-    <div className={cn("grid gap-2 relative", className)}>
+    <div className={cn("grid gap-2 relative")}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -53,7 +55,8 @@ export default function DatePicker({
             variant={"ghost"}
             className={cn(
               "w-[300px] justify-start text-left font-normal max-w-full border bg-background",
-              !date && "text-muted-foreground"
+              !date && "text-muted-foreground",
+              className
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
@@ -67,15 +70,15 @@ export default function DatePicker({
                 format(date.from, "LLL dd, y")
               )
             ) : (
-              <span>No dates selected</span>
+              <span>{initialText}</span>
             )}
           </Button>
         </PopoverTrigger>
         <PopoverContent
           className="w-auto p-0 max-sm:scale-[0.85] "
           align="center"
-          side="top"
-          sideOffset={-300}
+          side="bottom"
+          sideOffset={offset}
         >
           <div className="p-3">
             <Calendar
@@ -103,6 +106,15 @@ export default function DatePicker({
                 </span>
               </p>
             )}
+            {!price && getDays(tempDate) > 0 && (
+              <div className="text-sm w-full text-muted-foreground text-center flex flex-col items-center">
+                <span className="font-semibold">
+                  {tempDate?.from && format(tempDate.from, "LLL dd, y")} -{" "}
+                  {tempDate?.to && format(tempDate.to, "LLL dd, y")}
+                </span>
+                <span> {getDays(tempDate)} night(s) in total</span>
+              </div>
+            )}
             <div className="w-full flex items-center justify-center sm:justify-end gap-2  ">
               <Button
                 variant="outline"
@@ -112,7 +124,12 @@ export default function DatePicker({
               >
                 Clear
               </Button>
-              <Button size="sm" onClick={handleApply} className="w-20">
+              <Button
+                size="sm"
+                onClick={handleApply}
+                className="w-20"
+                disabled={!tempDate?.from || !tempDate?.to}
+              >
                 Apply
               </Button>
             </div>

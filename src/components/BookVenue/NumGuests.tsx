@@ -8,16 +8,21 @@ import {
 } from "@/components/ui/popover";
 import { UserGroup } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type GuestsProps = {
   guests: number;
   setGuests: (guests: number) => void;
-  maxGuests: number;
+  maxGuests?: number;
+  className?: string;
+  triggerText?: string;
 };
 export default function NumGuests({
   guests,
   setGuests,
   maxGuests,
+  className,
+  triggerText = "Select guests",
 }: GuestsProps) {
   const [adults, setAdults] = useState(0);
   const [children, setChildren] = useState(0);
@@ -26,12 +31,19 @@ export default function NumGuests({
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
-        <div className="flex bg-background items-center gap-2 text-muted-foreground w-full border rounded-md py-2 px-4 cursor-pointer hover:bg-accent hover:text-foreground transition-colors duration-200 ease-out shadow-sm ">
+        <div
+          className={cn(
+            "flex bg-background items-center gap-2 text-muted-foreground w-full border rounded-md py-2 px-4 cursor-pointer hover:bg-accent hover:text-foreground transition-colors duration-200 ease-out shadow-sm ",
+            className
+          )}
+        >
           <UserGroup color={guests > 0 ? "default" : "muted"} />
           {guests > 0 ? (
-            <span className="text-foreground">{guests} guest(s)</span>
+            <span className="text-foreground">
+              {guests} {guests === 1 ? "guest" : "guests"}
+            </span>
           ) : (
-            <span>Select guests</span>
+            <span>{triggerText}</span>
           )}
         </div>
       </PopoverTrigger>
@@ -39,7 +51,7 @@ export default function NumGuests({
         <div className="flex flex-col gap-6 w-full">
           <div className="flex items-center gap-4 justify-between w-full">
             <p>Adults</p>
-            <div className="flex items-center gap-2 ">
+            <div className="flex items-center w-20 justify-between">
               <Button
                 variant="primary-light"
                 className="w-6 h-6 p-0 rounded-full flex items-center justify-center"
@@ -56,7 +68,7 @@ export default function NumGuests({
                 className="w-6 h-6 p-0 rounded-full flex items-center justify-center"
                 size="icon"
                 onClick={() => setAdults(adults + 1)}
-                disabled={adults + children >= maxGuests}
+                disabled={maxGuests ? adults + children >= maxGuests : false}
               >
                 +
               </Button>
@@ -64,7 +76,7 @@ export default function NumGuests({
           </div>
           <div className="flex items-center gap-4 justify-between w-full">
             <p>Children</p>
-            <div className="flex items-center gap-2 ">
+            <div className="flex items-center w-20 justify-between">
               <Button
                 variant="primary-light"
                 className="w-6 h-6 p-0 rounded-full flex items-center justify-center"
@@ -81,7 +93,7 @@ export default function NumGuests({
                 className="w-6 h-6 p-0 rounded-full flex items-center justify-center"
                 size="icon"
                 onClick={() => setChildren(children + 1)}
-                disabled={adults + children >= maxGuests || adults <= 0}
+                disabled={maxGuests ? adults + children >= maxGuests : false}
               >
                 +
               </Button>

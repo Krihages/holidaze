@@ -15,12 +15,14 @@ type BookingProps = {
   venue: VenueType;
   isLoggedIn: IsLoggedIn;
   bookingModalClose?: () => void | undefined;
+  offset?: number;
 };
 
 export default function BookVenue({
   venue,
   isLoggedIn,
   bookingModalClose,
+  offset = 5,
 }: BookingProps) {
   const [date, setDate] = useState<DateRange | undefined>(undefined);
   const [guests, setGuests] = useState(0);
@@ -60,6 +62,7 @@ export default function BookVenue({
           date={date}
           setDate={setDate}
           disabledDates={bookings}
+          offset={offset}
         />
         <div className="self-start flex flex-col gap-2 text-sm justify-end text-muted-foreground w-full ">
           <NumGuests

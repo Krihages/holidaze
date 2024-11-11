@@ -6,4 +6,6 @@ export type datePickerProps = {
   price?: number | undefined;
   date?: DateRange | undefined;
   setDate?: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+  initialText?: string;
+  offset?: number;
 };
