@@ -3,7 +3,7 @@
 import Modal from "..";
 import { PriceRange } from "./PriceRange";
 import SearchInput from "./SearchInput";
-import { useReducer, useEffect, useTransition, useState } from "react";
+import { useReducer, useEffect, useTransition } from "react";
 import Amenities from "./Amenities";
 import { State, Action, SearchParams } from "@/types/filter";
 import GuestCount from "./GuestCount";
@@ -12,7 +12,7 @@ import FilterButton from "./FilterButton";
 import ResetFilter from "./ResetFilter";
 import getInitialState from "./getInitialState";
 import reducer from "./Reducer";
-import { DateRange } from "react-day-picker";
+
 import SelectDates from "./SelectDates";
 import { format } from "date-fns";
 /**
