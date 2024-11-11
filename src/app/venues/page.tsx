@@ -9,6 +9,8 @@ export const metadata = {
     "Discover and book unique venues for your next stay. Browse our curated collection of accommodations, filter by amenities, location and price to find your perfect match.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function Venues({
   searchParams,
 }: {
