@@ -45,7 +45,7 @@ export default function SearchedBadges({ params }: { params: SearchParams }) {
           } else if (key === "query") {
             return (
               <HoverMessage message={`Search query for: "${value}"`}>
-                <Badge key={key}>"{value}"</Badge>
+                <Badge key={key}>&quot;{value}&quot;</Badge>
               </HoverMessage>
             );
           }
