@@ -12,6 +12,8 @@ import CustomerBookings from "./owner/CustomerBookings";
 import VenueMap from "./VenueMap";
 import HostDetails from "./HostDetails";
 
+export const dynamic = "force-dynamic";
+
 export default async function Venue({ id }: { id: string }) {
   const username = cookies.get("profile_name");
 
