@@ -11,7 +11,13 @@ export default function SearchedBadges({ params }: { params: SearchParams }) {
       <div className="flex gap-2 flex-wrap">
         {Object.entries(params).map(([key, value]) => {
           if (key === "guestCount") {
-            return <Badge key={key}>{value} guests</Badge>;
+            return (
+              <HoverMessage
+                message={`Venue must be able to accommodate a minimum of ${value} guests`}
+              >
+                <Badge key={key}>{value} guests</Badge>
+              </HoverMessage>
+            );
           } else if (key === "date") {
             return (
               <HoverMessage message={`Selected dates (check in - check out)`}>
@@ -36,6 +42,12 @@ export default function SearchedBadges({ params }: { params: SearchParams }) {
             );
           } else if (key === "price") {
             return <Badge key={key}>{value} NOK / night</Badge>;
+          } else if (key === "query") {
+            return (
+              <HoverMessage message={`Search query for: "${value}"`}>
+                <Badge key={key}>"{value}"</Badge>
+              </HoverMessage>
+            );
           }
           return (
             <Badge key={key}>
