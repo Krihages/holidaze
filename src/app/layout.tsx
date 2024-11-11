@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Providers from "@/providers";
 import { Toaster } from "@/components/ui/toaster";
 import { Montserrat } from "next/font/google";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Holidaze",
@@ -29,7 +30,9 @@ export default function RootLayout({
           className={`${montserrat.className} max-w-screen overflow-x-hidden`}
         >
           <div className="grid grid-rows-[auto_1fr_auto] min-h-screen text-foreground bg-background">
-            <Header />
+            <Suspense fallback={<div className="h-[136px]" />}>
+              <Header />
+            </Suspense>
             <main>{children}</main>
             <Footer />
           </div>
