@@ -1,5 +1,5 @@
 import Image from "next/image";
-import venueMap from "@/images/venues/venue-map.jpg";
+const venueMap = "/images/venues/venue-map.jpg";
 
 export default function VenueMap() {
   return (

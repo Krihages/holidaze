@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { useState } from "react";
 import { XMarkIcon } from "@/components/icons";
-import placeholderImg from "@/images/placeholder-img.jpg";
+const placeholderImg = "/images/placeholder-img.jpg";
 
 type MediaProps = {
   images: Media[];

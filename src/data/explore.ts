@@ -1,14 +1,13 @@
-import { StaticImageData } from "next/image";
-import newZealand from "@/images/explore/pin-new-zealand.png";
-import france from "@/images/explore/pin-france.png";
-import norway from "@/images/explore/pin-norway.png";
-import china from "@/images/explore/pin-china.png";
-import italy from "@/images/explore/pin-italy.png";
-import southAfrica from "@/images/explore/pin-south-africa.png";
-import lasVegas from "@/images/explore/pin-las-vegas.png";
-import ushuaia from "@/images/explore/pin-ushuaia.png";
-import cancun from "@/images/explore/pin-cancun.png";
-import tasiilaq from "@/images/explore/pin-tasiilaq.png";
+const newZealand = "/images/explore/pin-new-zealand.png";
+const france = "/images/explore/pin-france.png";
+const norway = "/images/explore/pin-norway.png";
+const china = "/images/explore/pin-china.png";
+const italy = "/images/explore/pin-italy.png";
+const southAfrica = "/images/explore/pin-south-africa.png";
+const lasVegas = "/images/explore/pin-las-vegas.png";
+const ushuaia = "/images/explore/pin-ushuaia.png";
+const cancun = "/images/explore/pin-cancun.png";
+const tasiilaq = "/images/explore/pin-tasiilaq.png";
 
 /* 
 Data for the explore component/section (home page)
@@ -97,7 +96,7 @@ export type Destination = {
     top: number;
     left: number;
   };
-  url: StaticImageData;
+  url: string;
 };
 export const destinations: Destination[] = [
   { name: "argentina", position: { top: 45, left: -20 }, url: ushuaia },
@@ -109,6 +108,14 @@ export const destinations: Destination[] = [
   { name: "france", position: { top: -10, left: 0 }, url: france },
 
   { name: "united-states", position: { top: -30, left: -37 }, url: lasVegas },
-  { name: "norway", position: { top: -35, left: 7 }, url: norway },
-  { name: "greenland", position: { top: -40, left: -12 }, url: tasiilaq },
+  {
+    name: "norway",
+    position: { top: -35, left: 7 },
+    url: norway,
+  },
+  {
+    name: "greenland",
+    position: { top: -40, left: -12 },
+    url: tasiilaq,
+  },
 ];

@@ -2,9 +2,10 @@
 
 import { Media } from "@/types/venue";
 import randomVenueUrl from "@/lib/helpers/randomVenueUrl";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import useCheckImage from "@/hooks/useCheckImage";
-import imageBlur from "@/images/image-blur.jpg";
+
+const imageBlur = "/images/image-blur.jpg";
 
 import {
   Carousel,
@@ -19,7 +20,7 @@ export default function VenueImages({ images }: { images: Media[] }) {
 
   if (images?.length === 0) {
     images[0] = {
-      url: randomVenueUrl() as StaticImageData,
+      url: randomVenueUrl(),
       alt: "placeholder venue alt text",
     };
   }

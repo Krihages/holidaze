@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { randomVenueUrl } from "@/lib/helpers";
 import { StaticImageData } from "next/image";
-import imageBlur from "@/images/image-blur.jpg";
+
+const imageBlur = "/images/image-blur.jpg";
 
 export default function useCheckImage(url: string | undefined) {
   const [newUrl, setNewUrl] = useState<string | undefined | StaticImageData>(

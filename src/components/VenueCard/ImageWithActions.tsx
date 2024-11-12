@@ -6,7 +6,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { VenueType } from "@/types/venue";
 import ImgActions from "./ImgActions";
 import useCheckImage from "@/hooks/useCheckImage";
-import imageBlur from "@/images/image-blur.jpg";
+const imageBlur = "/images/image-blur.jpg";
 
 export default function ImageWithActions({ venue }: { venue: VenueType }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,7 +28,7 @@ export default function ImageWithActions({ venue }: { venue: VenueType }) {
         sizes="(max-width: full) 100vw, (max-width: 1200px) 50vw, 33vw"
         className="object-cover rounded-md h-full"
         placeholder="blur"
-        blurDataURL={imageBlur.src}
+        blurDataURL={imageBlur}
         unoptimized={true}
       />
       <ImgActions isHovered={isHovered} venue={venue} />

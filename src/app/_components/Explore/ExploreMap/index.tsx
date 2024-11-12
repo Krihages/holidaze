@@ -1,5 +1,5 @@
 import Image from "next/image";
-import url from "@/images/explore-map.png";
+const url = "/images/explore-map.png";
 import DestinationPins from "./DestinationPins";
 
 export default function ExploreMap() {
@@ -7,7 +7,7 @@ export default function ExploreMap() {
     <div className="relative w-full aspect-video flex-grow">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <Image
-        src={url.src}
+        src={url}
         alt="map"
         fill
         className="object-cover w-full h-full"
