@@ -16,7 +16,9 @@ export default function VenueDetails({ venue }: { venue: VenueType }) {
         </CardHeader>
       </div>
 
-      <CardTitle className="mt-0 mb-1">{venue.name}</CardTitle>
+      <CardTitle className="mt-0 mb-1">
+        {venue.name.length > 60 ? venue.name.slice(0, 60) + "..." : venue.name}
+      </CardTitle>
       <CardDescription className=" text-base  text-foreground flex-wrap mt-0 ">
         <span className="font-semibold mt-0 ">{venue.price} nok</span>{" "}
         <span className="text-muted-foreground">/night</span>
