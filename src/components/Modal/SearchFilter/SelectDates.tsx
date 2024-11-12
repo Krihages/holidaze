@@ -19,7 +19,12 @@ export default function SelectDates({
   return (
     <div className="flex flex-col gap-2">
       <h2 className="font-semibold">Check in - Check out</h2>
-      <DatePicker date={dates} setDate={setDates} className="w-full" />
+      <DatePicker
+        date={dates}
+        setDate={setDates}
+        className="w-full "
+        offset={-330}
+      />
     </div>
   );
 }

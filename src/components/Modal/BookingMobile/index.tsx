@@ -47,7 +47,7 @@ export default function BookingMobile({
             venue={venue}
             isLoggedIn={isLoggedIn}
             bookingModalClose={() => setBookingModal(false)}
-            offset={-300}
+            offset={-340}
           />
         </div>
       </Modal.Main>

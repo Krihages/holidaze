@@ -75,7 +75,7 @@ export default function DatePicker({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto p-0 max-sm:scale-[0.85] "
+          className="w-auto p-0 max-sm:scale-[0.95] max-h-full overflow-y-auto "
           align="center"
           side="bottom"
           sideOffset={offset}
