@@ -28,6 +28,9 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
       localStorage.getItem("venue_favorites") || "[]"
     );
     setFavorites(storedFavorites);
+
+    // empty dependency array to run the effect only once on mount (not on re-renders)
+    // separate logic for updating the favorites state
   }, []);
 
   const addFavorite = (product: VenueType) => {

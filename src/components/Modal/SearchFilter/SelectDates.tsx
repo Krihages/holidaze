@@ -14,6 +14,8 @@ export default function SelectDates({
 
   useEffect(() => {
     dispatch({ type: "date", payload: dates });
+    // only updates if the dates from useState changes, since this is a separate state that is passed to the datePicker component and will be updated there
+    // if the date from props changes, the datePicker component will update the dates state and this effect will trigger again
   }, [dates]);
 
   return (
