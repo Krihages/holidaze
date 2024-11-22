@@ -3,7 +3,7 @@
 import Modal from "..";
 import { PriceRange } from "./PriceRange";
 import SearchInput from "./SearchInput";
-import { useReducer, useEffect, useTransition } from "react";
+import { useReducer, useEffect, useTransition, useCallback } from "react";
 import Amenities from "./Amenities";
 import { State, Action, SearchParams } from "@/types/filter";
 import GuestCount from "./GuestCount";
@@ -35,7 +35,7 @@ export default function SearchFilter({
     initialState
   );
 
-  function applyFilter() {
+  const applyFilter = useCallback(() => {
     const searchParams = new URLSearchParams();
     Object.entries(state.amenities).forEach(([amenity, isChecked]) => {
       if (isChecked) searchParams.set(amenity, "true");
@@ -60,7 +60,7 @@ export default function SearchFilter({
       );
     }
     router.push(`?${searchParams.toString()}`);
-  }
+  }, [state, router]);
 
   useEffect(() => {
     if (state.shouldApplyFilter) {
