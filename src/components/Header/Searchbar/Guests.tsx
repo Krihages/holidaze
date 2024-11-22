@@ -12,7 +12,7 @@ export default function Guests({
       <NumGuests
         guests={guests}
         setGuests={setGuests}
-        className="rounded-full border-gray-400 w-[180px] justify-center"
+        className="rounded-full border-gray-400 max-lg:w-[300px] w-[180px] justify-center"
         triggerText="Guests"
         maxGuests={99}
       />

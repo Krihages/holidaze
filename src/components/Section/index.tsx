@@ -16,7 +16,9 @@ export default function Section({
   const colors = getColors(variant);
 
   return (
-    <section className={cn(colors.bg, colors.text, "px-4 py-10", className)}>
+    <section
+      className={cn(colors.bg, colors.text, "px-2 sm:px-4 py-10", className)}
+    >
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   );

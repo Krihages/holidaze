@@ -11,7 +11,7 @@ import { format } from "date-fns";
 import dateParse from "@/lib/helpers/dateParse";
 import { useSearchParams } from "next/navigation";
 
-export default function Searchbar() {
+export default function Searchbar({ closeMenu }: { closeMenu?: () => void }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const dateParam = searchParams.get("date");
@@ -49,11 +49,12 @@ export default function Searchbar() {
     }${guestsString !== "" ? `guestCount=${guestsString}` : ""}`;
 
     router.push(url);
+    closeMenu?.();
   }
 
   return (
-    <div className="bg-background w-full p-4 shadow-md max-w-full max-lg:hidden relative z-10">
-      <div className="max-w-7xl mx-auto flex items-center justify-center gap-2">
+    <div className="bg-background w-full p-4 max-sm:px-2 max-lg:py-8 shadow-md max-w-full  relative z-10 max-lg:w-full">
+      <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 max-lg:flex-col max-lg:w-full max-lg:gap-4">
         <Destination
           destination={destination}
           setDestination={setDestination}

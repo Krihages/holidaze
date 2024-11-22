@@ -48,6 +48,11 @@ export default function Destination({
               value={destination}
               maxLength={16}
               onChange={(e) => setDestination(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  setIsOpen(false);
+                }
+              }}
             />
           </div>
         </PopoverContent>
