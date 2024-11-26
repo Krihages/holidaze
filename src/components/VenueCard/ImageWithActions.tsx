@@ -34,6 +34,7 @@ export default function ImageWithActions({ venue }: { venue: VenueType }) {
         placeholder="blur"
         blurDataURL={imageBlur}
         unoptimized={true}
+        onError={() => setUrl(randomVenueUrl())}
       />
       <ImgActions isHovered={isHovered} venue={venue} />
     </AspectRatio>
