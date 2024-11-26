@@ -9,8 +9,8 @@ export default function Header(): JSX.Element {
   const user = cookies.checkUser();
 
   return (
-    <header>
-      <div className="py-4 px-2 sm:px-4 bg-primary-light text-primary-foreground">
+    <header className="max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-full max-lg:z-50">
+      <div className="py-4 px-2 sm:px-4 bg-primary-light text-primary-foreground ">
         <div className="flex justify-between items-center w-full max-w-7xl mx-auto">
           <Logo />
           <div className="flex gap-4 items-center">

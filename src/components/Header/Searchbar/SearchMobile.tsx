@@ -13,7 +13,7 @@ export default function SearchMobile() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="lg:hidden">
+    <div className="lg:hidden flex items-center">
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger>
           <SearchIcon color="reverse" />
