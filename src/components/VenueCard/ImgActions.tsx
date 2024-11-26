@@ -12,7 +12,7 @@ export default function ImgActions({
   return (
     <div
       className={`absolute top-2  transition-opacity duration-500 w-full ${
-        isHovered ? "opacity-100" : "opacity-0"
+        isHovered ? "opacity-100" : "lg:opacity-0"
       }`}
     >
       <div className={`absolute right-2 `}>
