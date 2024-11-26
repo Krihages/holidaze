@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import Providers from "@/providers";
 import { Toaster } from "@/components/ui/toaster";
 import { Montserrat } from "next/font/google";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Holidaze",
