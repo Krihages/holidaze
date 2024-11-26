@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import cookies from "@/lib/cookies";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
