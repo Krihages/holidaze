@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Holidaze",
   description:
     "Holidaze is a platform for discovering and booking unique venues for your next stay.",
+  icons: {
+    icon: "/images/favicon.ico",
+  },
 };
 
 const montserrat = Montserrat({
