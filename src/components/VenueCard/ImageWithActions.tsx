@@ -5,13 +5,17 @@ import { useState } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { VenueType } from "@/types/venue";
 import ImgActions from "./ImgActions";
-import useCheckImage from "@/hooks/useCheckImage";
+import { randomVenueUrl } from "@/lib/helpers";
+
 const imageBlur = "/images/image-blur.jpg";
 
 export default function ImageWithActions({ venue }: { venue: VenueType }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [url, setUrl] = useState(venue.media[0]?.url);
 
-  const newUrl = useCheckImage(venue.media[0]?.url as string);
+  if (!url) {
+    setUrl(randomVenueUrl());
+  }
 
   return (
     <AspectRatio
@@ -21,7 +25,7 @@ export default function ImageWithActions({ venue }: { venue: VenueType }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <Image
-        src={newUrl ?? imageBlur}
+        src={url ?? imageBlur}
         alt={venue.media[0]?.alt ?? venue.name}
         fill
         quality={40}
