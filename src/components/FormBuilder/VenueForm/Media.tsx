@@ -80,7 +80,7 @@ function SmallImage({
       <div className="relative w-full h-full">
         <Image
           src={media.url}
-          alt=""
+          alt="user selected venue media"
           fill
           className="rounded-md object-cover"
         />
@@ -111,7 +111,7 @@ function MainImage({
     <div className="relative w-full h-full">
       <Image
         src={media?.url ?? placeholderImg}
-        alt=""
+        alt="user selected venue media"
         fill
         className="rounded-md shadow-md object-cover border"
       />

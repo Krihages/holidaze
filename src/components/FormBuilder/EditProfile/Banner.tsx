@@ -26,7 +26,7 @@ export default function Banner({
       />
       <img
         src={banner?.url || "/images/placeholder-img.jpg"}
-        alt={banner?.alt || "Banner"}
+        alt={banner?.alt || "User selected banner "}
         className="rounded-sm object-cover w-full min-h-32 max-h-32 mt-2"
         onError={() => setBanner({ url: "/images/placeholder-img.jpg" })}
       />
