@@ -11,9 +11,10 @@ export default function Banner({
   setBanner: (banner: { url: string; alt?: string }) => void;
 }) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") return null;
-    setBanner({ url: e.target.value, alt: banner.alt });
+    const newUrl = e.target.value;
+    setBanner({ url: newUrl, alt: banner.alt });
   };
+
   return (
     <div className="flex flex-col gap-2">
       <FormBuilder.Field
@@ -24,7 +25,7 @@ export default function Banner({
         value={banner?.url === "/images/placeholder-img.jpg" ? "" : banner?.url}
       />
       <img
-        src={banner?.url}
+        src={banner?.url || "/images/placeholder-img.jpg"}
         alt={banner?.alt || "Banner"}
         className="rounded-sm object-cover w-full min-h-32 max-h-32 mt-2"
         onError={() => setBanner({ url: "/images/placeholder-img.jpg" })}
