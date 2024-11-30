@@ -38,14 +38,19 @@ export default function Destination({
         </PopoverTrigger>
         <PopoverContent className="w-[300px] max-w-full px-6 pt-8 pb-6 rounded-md ">
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-muted-foreground font-semibold">
+            <label
+              className="text-sm text-muted-foreground font-semibold"
+              htmlFor="destination"
+            >
               Destination:
-            </p>
+            </label>
             <Input
               type="text"
               placeholder="City, region, country etc.."
               className=""
               value={destination}
+              id="destination"
+              name="destination"
               maxLength={16}
               onChange={(e) => setDestination(e.target.value)}
               onKeyDown={(e) => {
