@@ -11,7 +11,8 @@ import Customer from "./Customer";
  */
 export default function RegisterForm(): JSX.Element {
   return (
-    <div className="max-w-lg p-4 sm:px-8 sm:py-10 rounded-lg shadow bg-white text-foreground">
+    <div className="max-w-lg p-4 sm:px-8 sm:py-10 rounded-lg shadow bg-white text-foreground mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Create account</h1>
       <p className=" font-semibold mb-2 text-muted-foreground">
         Select account type:
       </p>
