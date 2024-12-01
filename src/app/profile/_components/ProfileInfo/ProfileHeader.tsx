@@ -5,6 +5,7 @@ import CreateVenue from "@/components/Modal/CreateVenue";
 import EditProfileModal from "@/components/Modal/EditProfile";
 
 export default function ProfileInfo({ profile }: { profile: Profile }) {
+  console.log(profile);
   return (
     <div className="flex flex-col md:flex-row flex-wrap gap-10 w-full max-w-screen ">
       <Avatar media={profile.avatar} name={profile.name} />
@@ -15,7 +16,7 @@ export default function ProfileInfo({ profile }: { profile: Profile }) {
         </div>
         <div className="flex gap-2">
           <EditProfileModal profile={profile} />
-          <CreateVenue />
+          {profile.venueManager && <CreateVenue />}
         </div>
       </div>
     </div>
