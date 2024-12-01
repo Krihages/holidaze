@@ -19,7 +19,7 @@ export default function SearchMobile() {
           <SearchIcon color="reverse" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-0">
-          <Searchbar closeMenu={() => setOpen(false)} />
+          <Searchbar closeMenu={() => setOpen(false)} offset={-200} />
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

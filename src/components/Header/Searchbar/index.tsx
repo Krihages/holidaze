@@ -11,7 +11,13 @@ import { format } from "date-fns";
 import dateParse from "@/lib/helpers/dateParse";
 import { useSearchParams } from "next/navigation";
 
-export default function Searchbar({ closeMenu }: { closeMenu?: () => void }) {
+export default function Searchbar({
+  closeMenu,
+  offset = 5,
+}: {
+  closeMenu?: () => void;
+  offset?: number;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const dateParam = searchParams.get("date");
@@ -59,7 +65,7 @@ export default function Searchbar({ closeMenu }: { closeMenu?: () => void }) {
           destination={destination}
           setDestination={setDestination}
         />
-        <Dates dates={date} setDates={setDate} />
+        <Dates dates={date} setDates={setDate} offset={offset} />
         <Guests guests={guests} setGuests={setGuests} />
         <Button className="rounded-full py-5 px-8" onClick={handleSearch}>
           Search
