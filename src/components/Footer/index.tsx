@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex flex-col  ">
               <p className="font-semibold mb-2">Explore</p>
               <Link
-                href="/venues"
+                href="/"
                 className="hover:underline pb-1  transition-all duration-300"
               >
                 Venues
@@ -24,7 +24,7 @@ export default function Footer() {
                 Top Venues
               </Link>
               <Link
-                href="/contact"
+                href="/"
                 className="hover:underline pb-1  transition-all duration-300"
               >
                 Blog
@@ -33,13 +33,13 @@ export default function Footer() {
             <div className="flex flex-col gap-1 ">
               <p className="font-semibold mb-1">Company</p>
               <Link
-                href="/contact"
+                href="/"
                 className="hover:underline pb-1  transition-all duration-300"
               >
                 Careers
               </Link>
               <Link
-                href="/contact"
+                href="/"
                 className="hover:underline pb-1  transition-all duration-300"
               >
                 Blog
