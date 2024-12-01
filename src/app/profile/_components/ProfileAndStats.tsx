@@ -14,7 +14,7 @@ export default async function ProfileAndStats({ name }: { name: string }) {
   const profile = data.data.data;
 
   return (
-    <div className="flex flex-col gap-32">
+    <div className="flex flex-col gap-32 overflow-hidden">
       <ProfileInfo profile={profile} />
       <ProfileStats profile={profile} />
     </div>
