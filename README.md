@@ -1,3 +1,33 @@
+# Holidaze - Project exam 2nd year
+
+
+![holidaze-1-portfolio](https://github.com/user-attachments/assets/b14755ab-c515-4c1d-a0f7-28587f49825c)
+
+A modern, user-friendly platform designed for booking accommodations and managing venues. Holidaze serves both customers and venue managers, providing essential features for seamless holiday planning and administration.
+
+## Description
+
+Holidaze is a full-featured accommodation booking application with two interfaces:
+- **Customer-facing website** for browsing and booking venues.
+- **Admin-facing portal** for venue managers to register, manage, and track bookings.
+
+Key Features:
+- Browse a list of venues or search for specific ones.
+- View venue details, including availability on a calendar.
+- Customers can book venues and view their upcoming bookings.
+- Venue managers can create, update, and delete venues, and view bookings for their properties.
+- User authentication and profile customization (avatar updates).
+
+## Built With
+
+You can list a the tech stack that you've used over here
+
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com)
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
